@@ -1,0 +1,27 @@
+================================================================================
+  BBC MONITORING SERVICE — Y-SECTION WATCH LOG
+  Watch date     : 13 MAR 1989
+  Watch period   : 1800 - 2000 Z
+  Receiving site : Crowsley Park, Henley-on-Thames
+  Operator       : K.M. ASHWORTH
+  Position       : Y-DESK 4
+================================================================================
+
+  1859 Z    Quiet on schedule. Tuning 6840 kHz upper sideband for the
+            1900Z slot. Band conditions: fair, light QSB.
+
+  1900 Z    Carrier on 6840 USB. Eleven-second instrumental call-up tune
+            in the clear. Hand-off recorder armed.
+
+  1900 Z+11 Callsign block, slow cadence.
+
+  1900 Z+19 Indicator group transmitted (one 5-figure group).
+
+  1900 Z+24 Message body: eight 5-figure groups. Spaced delivery, two
+            seconds between groups.
+
+  1901 Z    End-of-transmission tone. Off-air at 1901:08 Z.
+
+================================================================================
+  END OF LOG
+================================================================================

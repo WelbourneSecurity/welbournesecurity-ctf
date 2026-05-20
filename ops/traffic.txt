@@ -1,0 +1,17 @@
+UKWMO / ROYAL OBSERVER CORPS
+ROUTING SLIP
+
+EXERCISE: RAVEN GLASS
+CLASSIFICATION: TRAINING TRAFFIC
+DESTINATION: GROUP CONTROL WORKSTATION
+
+The workstation is not linked from the public site.
+
+Route group:
+
+  cmctMTQyMXo=
+
+Instruction:
+
+  Decode the route group.
+  Mount the decoded group at the site root.

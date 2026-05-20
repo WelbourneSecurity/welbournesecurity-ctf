@@ -1,0 +1,30 @@
+================================================================================
+  ИНТЕРЦЕПТ — INTERCEPTED TELEGRAM
+  Reference: GCHQ/H-DIV/SOV-1989-031
+  Classification: UK EYES ONLY — RUSSIAN (declassified for training use)
+================================================================================
+
+  ИСТОЧНИК / SOURCE       : Embassy-adjacent landline, Moscow Centre
+  ДАТА / DATE             : 14 MAR 1989
+  ВРЕМЯ / TIME            : 0445 MSK
+  ПОЛОСА / BAND           : Diplomatic teletype
+  ОПЕРАТОР / OPERATOR     : H-DIV-7 (LON)
+  СОСТОЯНИЕ / CONDITION   : Clean copy, no QRM
+
+--------------------------------------------------------------------------------
+  ШИФРОВКА / CIPHERTEXT
+--------------------------------------------------------------------------------
+
+         НЙЫЫЬЬ
+
+--------------------------------------------------------------------------------
+  NOTES
+--------------------------------------------------------------------------------
+
+  Six-letter ciphertext, no separators. Direction of travel: Lubyanka
+  inbound (GRU rezidentura). Recovered keying material for this period
+  is held alongside this telegram.
+
+================================================================================
+  END OF TELEGRAM
+================================================================================

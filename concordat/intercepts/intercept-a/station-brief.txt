@@ -1,0 +1,9 @@
+Y-SERVICE WATCH · STATION GLASSHOUSE · 13 MAR 1989 · 1900Z
+
+Y-SECTION TRAINING NOTE
+
+Column arithmetic only. No carries survive the column.
+An operator hearing 7 against pad 8 records 5.
+An operator hearing 3 against pad 9 records 2.
+
+Indicator groups select rows. Body groups align left to right.

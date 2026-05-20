@@ -1,0 +1,29 @@
+BBC MONITORING SERVICE — Y-SECTION
+WATCH SCHEDULE (ABRIDGED)
+
+EXERCISE: CONCORDAT
+CLASSIFICATION: TRAINING TRAFFIC
+DESTINATION: SECTION III OPERATIONS INBOX
+
+The Section III inbox is not linked from the public site.
+
+Route group:
+
+  c2VjdGlvbi1paWk=
+
+Instruction:
+
+  Decode the route group.
+  Mount the decoded group at the site root.
+
+--------------------------------------------------------------------------------
+  ABRIDGED SKED (REFERENCE ONLY)
+--------------------------------------------------------------------------------
+
+  STATION       CLASS    FREQ (kHz)  TIME (Z)   STATUS
+  --------------------------------------------------------
+  GLASSHOUSE    E11      6840 USB    1900       ACTIVE
+  LINESMAN      E08      9165 USB    1830       inactive
+  MARROW        E15      4825 USB    2200       inactive
+
+  Active entries feed the Section III inbox queue.

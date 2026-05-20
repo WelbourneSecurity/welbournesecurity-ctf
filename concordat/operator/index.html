@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CONCORDAT Operator Workstation</title>
+    <meta name="description" content="CONCORDAT operator workstation." />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="theme-color" content="#020405" />
+    <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css?v=1" />
+    <script src="./operator.js?v=1" defer></script>
+    <style>
+      body { background: #04070a; }
+
+      .op-shell {
+        max-width: 920px;
+        margin: 0 auto;
+        padding: 2.5rem 1.25rem 4rem;
+      }
+
+      .op-header {
+        padding-bottom: 1.4rem;
+        margin-bottom: 1.6rem;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .op-eyebrow {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 0.7rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin: 0 0 0.45rem;
+      }
+
+      .op-eyebrow::before {
+        content: "› ";
+        opacity: 0.7;
+      }
+
+      .op-header h1 {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: clamp(1.4rem, 3vw, 1.85rem);
+        color: var(--text);
+        margin: 0 0 0.35rem;
+        letter-spacing: -0.005em;
+      }
+
+      .op-header p {
+        font-family: "IBM Plex Sans", sans-serif;
+        font-size: 0.92rem;
+        color: var(--muted);
+        margin: 0;
+        max-width: 60ch;
+      }
+
+      .op-section {
+        margin-bottom: 1.8rem;
+      }
+
+      .op-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.18rem 0.55rem;
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 0.66rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent);
+        border: 1px solid rgba(110, 242, 199, 0.4);
+        border-radius: 3px;
+        background: rgba(110, 242, 199, 0.06);
+      }
+
+      .op-status::before {
+        content: "";
+        width: 0.45rem;
+        height: 0.45rem;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 4px var(--accent);
+      }
+
+      .concordat-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 0.8rem;
+        margin: 1rem 0 1.2rem;
+      }
+
+      .concordat-leg {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+
+      .concordat-leg-label {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 0.7rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .concordat-leg-label small {
+        display: block;
+        font-family: "IBM Plex Sans", sans-serif;
+        font-size: 0.66rem;
+        letter-spacing: 0.05em;
+        text-transform: none;
+        color: var(--muted);
+        opacity: 0.75;
+      }
+
+      .concordat-leg input {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 0.95rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 0.6rem 0.7rem;
+        background: rgba(255, 255, 255, 0.02);
+        color: var(--text);
+        border: 1px solid var(--line);
+        border-radius: 4px;
+      }
+
+      .concordat-leg input:focus {
+        outline: none;
+        border-color: var(--accent);
+        box-shadow: 0 0 0 2px rgba(110, 242, 199, 0.18);
+      }
+
+      .concordat-preview {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 0.85rem;
+        color: var(--muted);
+        margin: 0.6rem 0 1rem;
+      }
+
+      .concordat-preview code {
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.04);
+        padding: 0.1rem 0.4rem;
+        border-radius: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="op-shell">
+      <header class="op-header">
+        <p class="op-eyebrow">JOINT / CONCORDAT / TERMINAL</p>
+        <h1>CONCORDAT Operator Workstation</h1>
+        <p>Combined-flag workstation for the three-way intercept exercise. Restricted access; this terminal is unlinked from the public network.</p>
+        <p style="margin-top:0.8rem;"><span class="op-status">Online</span></p>
+      </header>
+
+      <section class="op-section roc-operator" aria-labelledby="op-packet-title">
+        <div class="roc-operator-heading">
+          <p class="roc-kicker">Exercise packet</p>
+          <h2 id="op-packet-title" style="font-family:'IBM Plex Mono',monospace;font-size:1.05rem;margin:0.2rem 0 0.6rem;">Three intercepts — one combined flag</h2>
+          <p>Three intercepts have been served to this terminal, one per operative. Each is solved independently. The combined flag is assembled from the three fragments and verified below.</p>
+        </div>
+
+        <aside class="roc-download-panel" aria-label="Exercise packet">
+          <div class="roc-download-panel-head">
+            <span class="roc-download-eyebrow">Legs</span>
+            <p>One intercept per service. Solve in any order.</p>
+          </div>
+          <div class="roc-download-list">
+            <a class="roc-download-link" href="../intercepts/intercept-a/">WAVERLY — MI6 / GLASSHOUSE<small>Numbers-station intercept</small></a>
+            <a class="roc-download-link" href="../intercepts/intercept-b/cable.html">SOLO — CIA / Station Rome<small>Released cable, redacted</small></a>
+            <a class="roc-download-link" href="../intercepts/intercept-c/">KURYAKIN — KGB / Lubyanka<small>Intercepted telegram</small></a>
+          </div>
+        </aside>
+      </section>
+
+      <section class="op-section roc-operator" aria-labelledby="op-assemble-title">
+        <div class="roc-operator-heading">
+          <p class="roc-kicker">Assemble fragments</p>
+          <h2 id="op-assemble-title" style="font-family:'IBM Plex Mono',monospace;font-size:1.05rem;margin:0.2rem 0 0.6rem;">CONCORDAT combined flag</h2>
+          <p>Enter the three fragments recovered from each leg. The terminal assembles them into the combined flag and verifies against the expected digest.</p>
+        </div>
+
+        <form id="concordat-form" class="roc-calculator">
+          <div class="concordat-grid">
+            <label class="concordat-leg">
+              <span class="concordat-leg-label">WAVERLY <small>MI6 — British</small></span>
+              <input data-leg="waverly" type="text" autocomplete="off" spellcheck="false" placeholder="fragment" aria-label="WAVERLY fragment (British)" />
+            </label>
+            <label class="concordat-leg">
+              <span class="concordat-leg-label">SOLO <small>CIA — American</small></span>
+              <input data-leg="solo" type="text" autocomplete="off" spellcheck="false" placeholder="fragment" aria-label="SOLO fragment (American)" />
+            </label>
+            <label class="concordat-leg">
+              <span class="concordat-leg-label">KURYAKIN <small>KGB — Soviet</small></span>
+              <input data-leg="kuryakin" type="text" autocomplete="off" spellcheck="false" placeholder="fragment" aria-label="KURYAKIN fragment (Soviet)" />
+            </label>
+          </div>
+
+          <p class="concordat-preview" aria-live="polite">Assembled: <code data-preview>P2P{…}</code></p>
+
+          <p class="roc-form-error" data-form-error aria-live="polite"></p>
+
+          <div class="roc-calculator-actions">
+            <button class="roc-calc-button" type="submit">Verify combined flag</button>
+            <button class="roc-calc-button is-secondary" type="button" data-form-clear>Clear</button>
+          </div>
+
+          <output id="concordat-output" class="roc-calc-output" aria-live="polite">
+            <span>Awaiting three fragments.</span>
+          </output>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>
