@@ -1,0 +1,32 @@
+================================================================================
+  BIKINI STATE: RED — TRAINING ARCHIVE
+  Reference: UKWMO/GRP20/1989-03
+  Classification: RESTRICTED (declassified for training use)
+================================================================================
+
+Three Royal Observer Corps traffic sheets from a Group 20 (York) exercise
+watch have been recovered from the March 1989 archive. The three reporting
+posts — Tunstall (55), Keyingham (56), and Skirlaugh (57) — all belong to
+the Tunstall cluster. Tunstall served as cluster master from 1975 to
+stand-down.
+
+  Determine the target plotted by the three posts and identify the site
+  at that location.
+
+  Submit the primary flag in the form:  P2P{SITENAME_NICKNAME}
+
+  where SITENAME is the short name of the site at the target coordinate
+  and NICKNAME is the nickname of that site.
+
+  If a quality threshold is achieved during the plotting procedure, a
+  secondary acknowledge appears separately. Submit it as a bonus flag.
+
+REPORT FILES
+------------
+  REPORT_A_TUNSTALL_55.txt    — Post 55, Tunstall
+  REPORT_B_KEYINGHAM_56.txt   — Post 56, Keyingham
+  REPORT_C_SKIRLAUGH_57.txt   — Post 57, Skirlaugh
+
+================================================================================
+  END OF DOCUMENT
+================================================================================
