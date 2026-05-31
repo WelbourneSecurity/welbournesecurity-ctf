@@ -1,15 +1,40 @@
-# The Cutlery Drawer — Solve
+# The Cutlery Drawer — Solution
 
-**Flag:** `P2P{...}`  _(TODO — author to provide)_
+> Spoiler — full walkthrough and flag.
 
-## Status
+**Flag:** `P2P{The_Standing_Order}`
 
-⚠️ **Awaiting author solution.** This OSINT challenge has not been independently
-solved for this writeup. Send the flag, the starting point/seed, and the intended
-OSINT trail and it will be written up here faithfully.
+An easy OSINT challenge: identify the venue from a single image of a distinctive carpet.
 
-## To capture
+## Walkthrough
 
-- [ ] Starting point / seed
-- [ ] OSINT pivots (sources, accounts, artefacts)
-- [ ] Final flag
+### 1 — Read the (minimal) prompt
+
+```
+God I just can't stand these challenges!
+```
+
+The word **"stand"** is a soft hint toward the venue name (*Standing*).
+
+### 2 — Inspect the image
+
+`OSINT.jpeg` at first looks like an abstract pattern, but it is a **carpet** — an ornate
+Wetherspoons-style design. (Checking metadata with `exiftool OSINT.jpeg` is a sensible
+first move, but the EXIF has been stripped, so the solve is visual.)
+
+### 3 — Recognise the Wetherspoons carpet
+
+Wetherspoons pubs are known for unique, venue-specific carpets. Reverse-image search or
+search terms like *"wetherspoons carpet Edinburgh"* / *"Wetherspoons carpet The Standing
+Order"* turn the task into venue-matching.
+
+### 4 — Match the venue
+
+The carpet belongs to **The Standing Order, Edinburgh** — which also fits the "stand"
+hint in the prompt.
+
+### 5 — Build the flag
+
+Format `P2P{Name_of_place}`, words joined with underscores:
+
+**`P2P{The_Standing_Order}`**

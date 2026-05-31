@@ -1,56 +1,99 @@
-# BIKINI State: RED — Solve
+# BIKINI State: RED — Solution
 
-> **Spoiler — author solution.** Excluded from the published site via `_config.yml`.
+> Spoiler — full walkthrough and flag.
 
 **Flag:** `P2P{HOLMPTON_THE_HOLE}`
 
-## TL;DR
+## Overview
 
-Apply each post's card-error correction to its GZI flash bearing, plot the three
-true bearings on the Group Control workstation, and the fix lands on **RAF
-Holmpton** — the Cold War ROTOR radar bunker in East Yorkshire, nicknamed
-**"The Hole."** Flag = `P2P{` + site short name + `_` + nickname + `}`.
+An OSINT / web-enumeration / mapping challenge themed on the Royal Observer Corps.
+Starting from the public site, find a hidden control panel, download three ROC post
+reports, correct the recorded bearings to TRUE bearings, triangulate the location on
+the ROC Network workstation, and read off the site's nickname to build the flag.
 
-## Steps
+## Walkthrough
 
-1. **Collect the reports.** From `/rg-1421z/` download the three traffic sheets and
-   the brief (`bikini-state-red.txt`). Each report gives a `GZI FLASH BEARING` and a
-   signed `GZI CARD ERROR`:
+### 1 — Enumerate the starting site
 
-   | Post | Flash bearing | Card error |
-   |------|---------------|------------|
-   | Tunstall 20/55  | 149.7° | +1.2 |
-   | Keyingham 20/56 |  99.0° | +0.8 |
-   | Skirlaugh 20/57 | 129.6° | −1.1 |
+The brief hints at a "hidden control panel" on `https://welbournesecurity.com/`. Check
+`robots.txt`:
 
-2. **Convert to true bearings** (apply the card-error correction):
-   `true = flash + card error`
-   - Tunstall: 149.7 + 1.2 = **150.9°**
-   - Keyingham: 99.0 + 0.8 = **99.8°**
-   - Skirlaugh: 129.6 − 1.1 = **128.5°**
+```
+https://welbournesecurity.com/robots.txt
+```
 
-3. **Plot the fix.** On the Group Control plotting workstation (`/roc-network/`),
-   select the three posts and enter their true bearings. The three lines of bearing
-   intersect tightly at approximately **53.6833, 0.0666** (spread ≈ 0.22 km).
+It discloses `/ops/traffic.txt`.
 
-4. **Identify the site.** That coordinate is **RAF Holmpton** (Holmpton, East Riding
-   of Yorkshire) — a 1950s ROTOR underground radar/early-warning bunker, now a
-   museum ("Visit the Bunker"). Its nickname is **"The Hole."**
+### 2 — Follow the breadcrumb
 
-5. **Build the flag:** `P2P{HOLMPTON_THE_HOLE}`.
+Open the disclosed file:
 
-## Notes for review
+```
+https://welbournesecurity.com/ops/traffic.txt
+```
 
-- Post coordinates come from the workstation dataset (`/roc-network/roc-data.json`):
-  Tunstall 53.7676, −0.0113; Keyingham 53.7013, −0.1019; Skirlaugh 53.8445, −0.2748.
-- Skipping the card-error step (entering the raw flash bearings) still lands ~450 m
-  from the bunker — unambiguously Holmpton — so the conversion is a precision step,
-  not a make-or-break one.
-- **Flag wording:** updated from the earlier motto-based form. It is now
-  `P2P{SITENAME_NICKNAME}` → `P2P{HOLMPTON_THE_HOLE}` (was `P2P{SITENAME_MOTTO}`).
-- **Conversion-reference caveat:** the workstation's "Bearing conversion reference"
-  reads `TRUE = MAGNETIC FIELD READING + WEST VARIATION + CARD ERROR`. The reports
-  supply only the card error (no west-variation figure), and the data resolves to
-  Holmpton when variation is treated as **0** (i.e. `true = flash + card`). If you
-  intend a non-zero magnetic variation to be part of the solve, the flash figures or
-  the on-page reference need adjusting to stay consistent — worth confirming.
+It contains a Base64 value:
+
+```
+cmctMTQyMXo=
+```
+
+Decode it:
+
+```bash
+echo "cmctMTQyMXo=" | base64 -d   # -> rg-1421z
+```
+
+This gives the hidden route: `https://welbournesecurity.com/rg-1421z/`.
+
+### 3 — Recover the post reports
+
+The control panel (20 Group York Control inbox) provides three traffic sheets:
+
+```
+REPORT_A_TUNSTALL_55.txt
+REPORT_B_KEYINGHAM_56.txt
+REPORT_C_SKIRLAUGH_57.txt
+```
+
+Each contains a **GZI flash bearing** and a **GZI card error**.
+
+### 4 — Correct to TRUE bearings
+
+`TRUE bearing = GZI flash bearing + GZI card error`
+
+| Post | Flash | Card error | TRUE bearing |
+|------|-------|-----------|--------------|
+| Tunstall (20/55)  | 149.6 | +1.2 | **150.8°** |
+| Keyingham (20/56) |  98.8 | +0.8 |  **99.6°** |
+| Skirlaugh (20/57) | 129.4 | −1.1 | **128.3°** |
+
+### 5 — Triangulate
+
+Open the ROC Network plotting workstation, select **Tunstall**, **Keyingham**, and
+**Skirlaugh**, and enter the corrected TRUE bearings (150.8 / 99.6 / 128.3). The three
+lines of bearing intersect at:
+
+```
+53.684069966006874, 0.06750168441000179
+```
+
+which is **RAF Holmpton** — the Cold War ROTOR underground radar bunker on the
+Holderness coast, East Riding of Yorkshire.
+
+### 6 — Build the flag
+
+RAF Holmpton's nickname is **"The Hole."** With format `P2P{NAME_NICKNAME}`:
+
+- `NAME` = `HOLMPTON`
+- `NICKNAME` = `THE_HOLE`
+
+**Flag: `P2P{HOLMPTON_THE_HOLE}`**
+
+## Notes
+
+- On the CTF archive the workstation is the ROC Network page (`/roc-network/`) and the
+  inbox is `/rg-1421z/`; all task files are listed on the challenge homepage.
+- Skipping the card-error correction (plotting the raw flash bearings) still lands
+  within a few hundred metres of the bunker, so it remains identifiable — the
+  correction is a precision step.
