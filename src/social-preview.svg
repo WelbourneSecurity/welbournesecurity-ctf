@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Welbourne Security social preview">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1621" />
+      <stop offset="55%" stop-color="#071018" />
+      <stop offset="100%" stop-color="#03070c" />
+    </linearGradient>
+    <radialGradient id="glow" cx="0.2" cy="0.15" r="0.7">
+      <stop offset="0%" stop-color="#6ef2c7" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#6ef2c7" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect width="1200" height="630" fill="url(#glow)" />
+  <g opacity="0.08">
+    <path d="M0 90H1200M0 210H1200M0 330H1200M0 450H1200M0 570H1200" stroke="#ffffff" />
+    <path d="M120 0V630M300 0V630M480 0V630M660 0V630M840 0V630M1020 0V630" stroke="#ffffff" />
+  </g>
+  <g transform="translate(785 70)">
+    <circle cx="210" cy="210" r="170" fill="#6ef2c7" fill-opacity="0.05" />
+    <circle cx="210" cy="210" r="170" fill="none" stroke="#6ef2c7" stroke-width="2.2" opacity="0.22" />
+    <circle cx="210" cy="210" r="112" fill="none" stroke="#6ef2c7" stroke-width="2" opacity="0.18" />
+    <circle cx="210" cy="210" r="58" fill="none" stroke="#6ef2c7" stroke-width="2" opacity="0.15" />
+    <path d="M210 40A170 170 0 0 1 380 210" fill="none" stroke="#6ef2c7" stroke-width="7" stroke-linecap="round" opacity="0.95" />
+    <path d="M210 40V380M40 210H380" stroke="#6ef2c7" stroke-width="1.5" opacity="0.14" />
+    <circle cx="210" cy="210" r="12" fill="#6ef2c7" />
+  </g>
+  <g transform="translate(88 105)">
+    <text x="0" y="0" fill="#6ef2c7" font-family="'IBM Plex Sans', sans-serif" font-size="26" letter-spacing="8">WELBOURNE SECURITY</text>
+    <text x="0" y="122" fill="#f2f7fb" font-family="'Space Grotesk', sans-serif" font-size="76" font-weight="700">Cyber Intelligence</text>
+    <text x="0" y="206" fill="#f2f7fb" font-family="'Space Grotesk', sans-serif" font-size="76" font-weight="700">Portfolio and Writeups</text>
+    <text x="0" y="302" fill="#95a9bc" font-family="'IBM Plex Sans', sans-serif" font-size="28">Public security writeups, browser-based tools, certifications, and platform work.</text>
+    <g transform="translate(0 372)">
+      <rect width="224" height="54" rx="27" fill="#6ef2c7" fill-opacity="0.12" stroke="#6ef2c7" stroke-opacity="0.3" />
+      <text x="28" y="35" fill="#f2f7fb" font-family="'IBM Plex Sans', sans-serif" font-size="22">SIGINT + Privacy</text>
+    </g>
+    <g transform="translate(248 372)">
+      <rect width="190" height="54" rx="27" fill="#ffffff" fill-opacity="0.05" stroke="#7da0ba" stroke-opacity="0.22" />
+      <text x="28" y="35" fill="#f2f7fb" font-family="'IBM Plex Sans', sans-serif" font-size="22">HTB / THM</text>
+    </g>
+  </g>
+</svg>

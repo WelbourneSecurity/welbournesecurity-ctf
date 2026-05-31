@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Royal Observer Corps Network | Welbourne Security</title>
+    <meta
+      name="description"
+      content="An educational tribute to the Royal Observer Corps network, showing how posts and Group Controls worked together through an interactive report plotting tool."
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="theme-color" content="#020405" />
+    <link rel="canonical" href="https://ctf.welbournesecurity.com/roc-network/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Welbourne Security" />
+    <meta property="og:title" content="Royal Observer Corps Network | Welbourne Security" />
+    <meta property="og:description" content="An educational tribute to the Royal Observer Corps network, showing how posts and Group Controls worked together through an interactive report plotting tool." />
+    <meta property="og:url" content="https://ctf.welbournesecurity.com/roc-network/" />
+    <meta property="og:image" content="https://welbournesecurity.com/src/social-preview.svg" />
+    <meta property="og:image:alt" content="Welbourne Security social preview card" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Royal Observer Corps Network | Welbourne Security" />
+    <meta name="twitter:description" content="An educational tribute to the Royal Observer Corps network, showing how posts and Group Controls worked together through an interactive report plotting tool." />
+    <meta name="twitter:image" content="https://welbournesecurity.com/src/social-preview.svg" />
+    <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Space+Grotesk:wght@500;700&display=swap" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css?v=1" />
+    <script type="module" src="/js/page.js" defer></script>
+    <script src="./roc.js" defer></script>
+  </head>
+  <body class="roc-page">
+    <script>(function(){try{var t=localStorage.getItem("theme");var d=window.matchMedia("(prefers-color-scheme: dark)").matches;if(t==="light"||(!t&&!d))document.body.classList.add("light-mode");}catch(e){}})();</script>
+    <a class="skip-to-content" href="#top">Skip to main content</a>
+    <header class="site-header">
+      <a class="brand" href="https://welbournesecurity.com/" aria-label="Back to home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" focusable="false">
+            <circle cx="24" cy="24" r="18" class="brand-mark-ring"></circle>
+            <circle cx="24" cy="24" r="11" class="brand-mark-ring"></circle>
+            <path d="M24 6 V42" class="brand-mark-grid"></path>
+            <path d="M6 24 H42" class="brand-mark-grid"></path>
+            <circle cx="24" cy="24" r="3.2" class="brand-mark-core"></circle>
+            <path d="M24 6 A18 18 0 0 1 42 24" class="brand-mark-sweep"></path>
+          </svg>
+        </span>
+        <span class="brand-copy"><strong>Welbourne Security</strong><small>ROC Network</small></span>
+      </a>
+      <div class="header-actions">
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a href="https://welbournesecurity.com/">Home</a>
+          <a href="https://welbournesecurity.com/projects/">Projects</a>
+          <a href="https://welbournesecurity.com/writeups/">Writeups</a>
+          <a href="https://welbournesecurity.com/tools/">Tools</a>
+          <a href="https://welbournesecurity.com/#contact">Contact</a>
+        </nav>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle light and dark mode"><span class="theme-toggle-label">Light Mode</span></button>
+      </div>
+    </header>
+    <main id="top" class="roc-shell" aria-label="Royal Observer Corps educational tribute">
+      <header class="roc-hero">
+        <div class="roc-hero-copy">
+          <p class="roc-kicker">Educational tribute</p>
+          <h1>Royal Observer Corps Network</h1>
+          <p>
+            An interactive tribute showing how the ROC nuclear monitoring network would have worked. Browse by Sector,
+            zoom into a Group, and see the cluster of posts that reported up to each Group Control. Group 20 (York) is
+            modelled in full from the March 1989 ringbell.co.uk map, including every cluster and its master post.
+          </p>
+        </div>
+        <div class="roc-hero-side">
+          <picture class="roc-hero-logo">
+            <source srcset="/src/roc-logo.webp" type="image/webp" />
+            <img src="/src/roc-logo.png" alt="Royal Observer Corps Network project logo" decoding="async" />
+          </picture>
+          <div class="roc-facts" aria-label="Network facts">
+            <div>
+              <strong>1,563</strong>
+              <span>underground monitoring posts</span>
+            </div>
+            <div>
+              <strong>5</strong>
+              <span>UKWMO Sectors plus Northern Ireland</span>
+            </div>
+            <div>
+              <strong>~40</strong>
+              <span>posts in Group 20 (York) at peak</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section class="roc-map-section" aria-labelledby="roc-map-title">
+        <div class="roc-section-heading">
+          <p class="roc-kicker">Interactive map</p>
+          <h2 id="roc-map-title">Browse by Sector, Group, and cluster</h2>
+          <p>
+            Pick a UKWMO Sector, then a Group within it. The default view focuses on Group 20 (York), the worked
+            example for this page. Cluster master posts (red) are the radio-equipped posts that reported up to the
+            Group Control (green). Satellite posts (blue) reported in to their cluster master.
+          </p>
+        </div>
+
+        <div class="roc-map-nav" aria-label="Map view">
+          <button type="button" data-view="all" class="roc-chip roc-chip-all" aria-pressed="false">All UK</button>
+          <div class="roc-map-sectors" role="group" aria-label="UKWMO Sectors" data-sector-chips></div>
+          <div class="roc-map-groups" role="group" aria-label="Groups in selected Sector" data-group-chips hidden></div>
+        </div>
+
+        <div class="roc-workspace">
+          <div class="roc-map-panel">
+            <svg
+              id="roc-map"
+              class="roc-map"
+              viewBox="0 0 628.09174 1051.4788"
+              role="img"
+              aria-labelledby="roc-map-svg-title"
+            >
+              <title id="roc-map-svg-title">UK map with ROC network points, clusters and Group Controls</title>
+              <g class="roc-map-grid" aria-hidden="true">
+                <path d="M0 150 H628.09174 M0 300 H628.09174 M0 450 H628.09174 M0 600 H628.09174 M0 750 H628.09174 M0 900 H628.09174" />
+                <path d="M125.618 0 V1051.4788 M251.236 0 V1051.4788 M376.855 0 V1051.4788 M502.473 0 V1051.4788" />
+              </g>
+              <image
+                class="roc-uk-map-image"
+                href="./united-kingdom.svg"
+                x="0"
+                y="32"
+                width="628.09174"
+                height="1051.4788"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              />
+              <g id="roc-link-layer" class="roc-link-layer"></g>
+              <g id="roc-point-layer" class="roc-point-layer"></g>
+            </svg>
+            <div class="roc-map-loading" id="roc-map-loading" aria-hidden="true">
+              <span class="roc-map-loading-spinner"></span>
+              <p>Loading network data…</p>
+            </div>
+            <div id="roc-tooltip" class="roc-tooltip" role="tooltip" hidden></div>
+          </div>
+
+          <aside class="roc-inspector" aria-label="Selected network detail">
+            <div class="roc-layer-controls" aria-label="Map layers">
+              <button class="roc-toggle is-active" type="button" data-layer-toggle="controls">Group Controls</button>
+              <button class="roc-toggle is-active" type="button" data-layer-toggle="posts">Monitoring Posts</button>
+            </div>
+
+<div class="roc-selected" id="roc-selected" aria-live="polite"></div>
+
+            <details class="roc-map-key">
+              <summary>Network key</summary>
+              <ul>
+                <li><span class="roc-key-dot is-control"></span>Group Control — plotted incoming reports for an entire Group.</li>
+                <li><span class="roc-key-dot is-master"></span>Cluster master post — radio-equipped, supervised its cluster.</li>
+                <li><span class="roc-key-dot is-post"></span>Monitoring post — manned underground bunker with GZI, BPI, FSM.</li>
+                <li><span class="roc-key-line is-cluster"></span>Cluster boundary — shows posts that reported to a master.</li>
+                <li><span class="roc-key-line is-link"></span>Reporting link — master post → Group Control.</li>
+              </ul>
+              <p class="roc-key-subhead">Sectors (1973 reorganisation)</p>
+              <ul class="roc-key-sectors">
+                <li><span class="roc-key-swatch is-metropolitan"></span>Metropolitan — Groups 1–5 covering London &amp; the Home Counties.</li>
+                <li><span class="roc-key-swatch is-southern"></span>Southern — south coast and Bristol Channel.</li>
+                <li><span class="roc-key-swatch is-midland"></span>Midland — Coventry, Bedford, Norwich, Shrewsbury.</li>
+                <li><span class="roc-key-swatch is-eastern"></span>Eastern — Lincoln, Leeds, York.</li>
+                <li><span class="roc-key-swatch is-western"></span>Western — Wrexham, Preston, Carlisle.</li>
+                <li><span class="roc-key-swatch is-caledonian"></span>Caledonian — all of Scotland (5 Groups).</li>
+                <li><span class="roc-key-swatch is-ni"></span>Northern Ireland — Group 31, Belfast.</li>
+              </ul>
+            </details>
+          </aside>
+        </div>
+      </section>
+
+      <section class="roc-briefing" aria-labelledby="roc-briefing-title">
+        <div class="roc-section-heading">
+          <p class="roc-kicker">Network primer</p>
+          <h2 id="roc-briefing-title">How the ROC turned sightings into warnings</h2>
+          <p>
+            The Corps began with aircraft reporting and later took on nuclear burst and fallout monitoring. The public
+            story is less about bunkers alone and more about disciplined volunteers, fixed instruments, and a national
+            reporting chain built for speed under pressure.
+          </p>
+        </div>
+
+        <div class="roc-briefing-grid">
+          <article class="roc-timeline" aria-labelledby="roc-timeline-title">
+            <h3 id="roc-timeline-title">Compressed history</h3>
+            <ol>
+              <li>
+                <time datetime="1925">1925</time>
+                <span>Observer Corps formed for visual aircraft detection, recognition, tracking, and reporting.</span>
+              </li>
+              <li>
+                <time datetime="1941">1941</time>
+                <span>The Corps received the Royal title after its Battle of Britain service.</span>
+              </li>
+              <li>
+                <time datetime="1955">1955</time>
+                <span>Cold War duties expanded to warning and measuring radioactivity after nuclear attack.</span>
+              </li>
+              <li>
+                <time datetime="1956">1956-65</time>
+                <span>1,563 underground monitoring posts were built across Great Britain and Northern Ireland.</span>
+              </li>
+              <li>
+                <time datetime="1968">1968</time>
+                <span>A major reorganisation reduced the number of operational posts.</span>
+              </li>
+              <li>
+                <time datetime="1991">1991</time>
+                <span>Active training ceased and the remaining underground posts closed.</span>
+              </li>
+            </ol>
+          </article>
+
+          <article class="roc-anatomy" aria-labelledby="roc-anatomy-title">
+            <h3 id="roc-anatomy-title">Inside a monitoring post</h3>
+            <figure class="roc-post-cutaway-media">
+              <a href="./roc-monitoring-post-cross-section.png" target="_blank" rel="noreferrer">
+                <img
+                  src="./roc-monitoring-post-cross-section.png"
+                  alt="Green technical cross-section diagram of a Royal Observer Corps monitoring post."
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
+            </figure>
+            <ul>
+              <li><strong>Access shaft</strong><span>About 14 feet down to the underground rooms.</span></li>
+              <li><strong>Monitoring room</strong><span>Working space for instrument readings and reports.</span></li>
+              <li><strong>Ventilation</strong><span>Surface vents kept the post usable while remaining low profile.</span></li>
+              <li><strong>Store area</strong><span>A small toilet and store supported longer watches.</span></li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="roc-knowledge-grid">
+          <article class="roc-chain" aria-labelledby="roc-chain-title">
+            <h3 id="roc-chain-title">Reporting chain</h3>
+            <ol>
+              <li><strong>Post</strong><span>Observers recorded burst direction, pressure, and radiation readings.</span></li>
+              <li><strong>Group Control</strong><span>Reports from multiple posts were plotted and checked for consistency.</span></li>
+              <li><strong>Sector Control</strong><span>Scientific teams built the wider fallout and warning picture.</span></li>
+              <li><strong>UKWMO</strong><span>National warning channels turned confirmed data into public and government alerts.</span></li>
+            </ol>
+          </article>
+
+          <article class="roc-glossary" aria-labelledby="roc-glossary-title">
+            <h3 id="roc-glossary-title">Instrument glossary</h3>
+            <details>
+              <summary>BPI</summary>
+              <p>Bomb Power Indicator: a pressure gauge used to estimate blast overpressure.</p>
+            </details>
+            <details>
+              <summary>FSM</summary>
+              <p>Fixed Survey Meter: a radiation instrument used to monitor dose rate from inside the post.</p>
+            </details>
+            <details>
+              <summary>GZI</summary>
+              <p>Ground Zero Indicator: a flash-bearing instrument used to estimate burst direction and elevation.</p>
+            </details>
+            <details>
+              <summary>Group Control</summary>
+              <p>The protected headquarters that received post reports, plotted data, and coordinated onward reporting.</p>
+            </details>
+          </article>
+
+          <article class="roc-hierarchy" aria-labelledby="roc-hierarchy-title">
+            <h3 id="roc-hierarchy-title">Network hierarchy</h3>
+            <p>The ROC operated across four tiers. Each tier served a distinct role in turning raw instrument readings into a national warning picture.</p>
+            <ol>
+              <li>
+                <strong>UKWMO Sector</strong>
+                <span>Five wide areas (Metropolitan, Southern, Midland, Western, Eastern) plus Northern Ireland. Each Sector Control held a scientific team that synthesised Group data into regional fallout predictions.</span>
+              </li>
+              <li>
+                <strong>Group</strong>
+                <span>Each Sector contained several Groups, each with a protected Group Control bunker. The Group Control plotted incoming post bearings on a large map board and passed consolidated reports upward. Great Britain had 29 Groups at peak strength.</span>
+              </li>
+              <li>
+                <strong>Cluster</strong>
+                <span>Within each Group, posts were gathered into radio clusters — typically three to five posts sharing a single cluster master. The master post was equipped with VHF radio as a backup to the telephone landline, so reports could still reach Group Control if landlines failed. The cluster boundary is shown as a green polygon on the map.</span>
+              </li>
+              <li>
+                <strong>Post</strong>
+                <span>The underground monitoring post: a 14-foot-deep concrete bunker staffed by two or three volunteer Observers. Each post held a GZI (flash direction), BPI (blast pressure), and FSM (radiation dose rate). Posts called in readings on a fixed schedule.</span>
+              </li>
+            </ol>
+            <p class="roc-hierarchy-note">
+              Group 20 (York) used this four-tier system. The map on this page shows the Eastern Sector → Group 20 → its thirteen clusters → all ~40 posts as they were on the March 1989 ringbell.co.uk operational map.
+            </p>
+          </article>
+        </div>
+
+        <details class="roc-training-note">
+          <summary>Open training extract</summary>
+          <div>
+            <p class="roc-kicker">Training extract</p>
+            <h3>Report discipline</h3>
+            <p>
+              A useful post report was short, repeatable, and easy for Group Control to plot. Readings were checked
+              against the instrument, spoken clearly, and logged before the next watch update.
+            </p>
+            <ul>
+              <li>Confirm the post number before passing a reading.</li>
+              <li>Keep burst, pressure, and radiation observations separate.</li>
+              <li>Send corrections quickly when an instrument value changes.</li>
+            </ul>
+          </div>
+        </details>
+      </section>
+
+      <section class="roc-operator" aria-labelledby="roc-operator-title">
+        <div class="roc-operator-heading">
+          <p class="roc-kicker">Group Control Operator</p>
+          <h2 id="roc-operator-title">Plot the supplied post reports</h2>
+          <p>
+            Enter three numbered post reports and their true bearings. The workstation resolves the pairwise
+            intersections and returns a coordinate fix for onward identification.
+          </p>
+        </div>
+
+        <form id="roc-calculator" class="roc-calculator">
+          <details class="roc-conversion-hint">
+            <summary>Bearing conversion reference</summary>
+            <p>TRUE = MAGNETIC FIELD READING + WEST VARIATION + CARD ERROR</p>
+            <p>If result &ge; 360.0&deg;, subtract 360.0&deg;.</p>
+          </details>
+
+          <div class="roc-report-grid" aria-label="ROC report inputs">
+            <label class="roc-report-row" data-report-row>
+              <span>Report A</span>
+              <select data-report-post aria-label="Report A post"></select>
+              <input data-report-bearing inputmode="decimal" type="number" step="0.1" min="0" max="359.9" placeholder="Bearing" aria-label="Report A true bearing" />
+            </label>
+            <label class="roc-report-row" data-report-row>
+              <span>Report B</span>
+              <select data-report-post aria-label="Report B post"></select>
+              <input data-report-bearing inputmode="decimal" type="number" step="0.1" min="0" max="359.9" placeholder="Bearing" aria-label="Report B true bearing" />
+            </label>
+            <label class="roc-report-row" data-report-row>
+              <span>Report C</span>
+              <select data-report-post aria-label="Report C post"></select>
+              <input data-report-bearing inputmode="decimal" type="number" step="0.1" min="0" max="359.9" placeholder="Bearing" aria-label="Report C true bearing" />
+            </label>
+          </div>
+
+          <div class="roc-calculator-actions">
+            <button class="roc-calc-button" type="submit">Calculate Fix</button>
+            <button class="roc-calc-button is-secondary" type="button" data-calc-clear>Clear</button>
+          </div>
+
+          <output id="roc-calc-output" class="roc-calc-output" aria-live="polite">
+            <span>Awaiting three post reports.</span>
+          </output>
+        </form>
+      </section>
+
+      <section class="roc-group20" aria-labelledby="roc-group20-title">
+        <div class="roc-section-heading">
+          <p class="roc-kicker">Group 20 — York</p>
+          <h2 id="roc-group20-title">The complete cluster structure</h2>
+          <p>
+            Group 20 covered the North and East Ridings of Yorkshire and the West Riding after the 1968 reorganisation,
+            reporting to York Group Control at the Acomb bunker (opened 1961, now preserved by English Heritage as
+            <a href="https://www.english-heritage.org.uk/visit/places/york-cold-war-bunker/">York Cold War Bunker</a>).
+            At peak the Group ran approximately forty underground posts organised into thirteen radio clusters.
+            The table below follows the March 1989 ringbell.co.uk map.
+          </p>
+        </div>
+
+        <div class="roc-group20-table-wrap">
+          <table class="roc-group20-table">
+            <caption>Group 20 cluster structure — March 1989 (source: ringbell.co.uk)</caption>
+            <thead>
+              <tr>
+                <th scope="col">Cluster</th>
+                <th scope="col">Master post</th>
+                <th scope="col">Post No.</th>
+                <th scope="col">Satellite posts</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Northallerton</td>
+                <td>Northallerton</td>
+                <td>10</td>
+                <td>Bedale (11)</td>
+              </tr>
+              <tr>
+                <td>Bedale area</td>
+                <td>Middlesmoor</td>
+                <td>33</td>
+                <td>North Stainley (30), Kirby Hill (31), Darley (32)</td>
+              </tr>
+              <tr>
+                <td>Pickering</td>
+                <td>Pickering</td>
+                <td>17</td>
+                <td>Kirby Moorside (16), Wykeham (23)</td>
+              </tr>
+              <tr>
+                <td>Bridlington</td>
+                <td>Bridlington</td>
+                <td>20</td>
+                <td>Skipsea (21), Langtoft (22)</td>
+              </tr>
+              <tr>
+                <td>Buckden</td>
+                <td>Buckden</td>
+                <td>25</td>
+                <td>Grassington (26), Settle (27), Horton-in-Ribblesdale (28)</td>
+              </tr>
+              <tr>
+                <td>Strensall</td>
+                <td>Strensall</td>
+                <td>38</td>
+                <td>Brandsby (37), Birdsall (15)</td>
+              </tr>
+              <tr>
+                <td>Pocklington</td>
+                <td>Pocklington</td>
+                <td>35</td>
+                <td>Tockwith (36), Fulford (47)</td>
+              </tr>
+              <tr>
+                <td>Guiseley</td>
+                <td>Guiseley</td>
+                <td>40</td>
+                <td>Thornton (41), Keighley (42), Gargrave (43)</td>
+              </tr>
+              <tr>
+                <td>Barwick</td>
+                <td>Barwick-in-Elmet</td>
+                <td>65</td>
+                <td>Camblesforth (45)</td>
+              </tr>
+              <tr>
+                <td>Beverley</td>
+                <td>Beverley</td>
+                <td>51</td>
+                <td>Holme-on-Spalding-Moor (50), Gilberdyke (52)</td>
+              </tr>
+              <tr>
+                <td>Tunstall</td>
+                <td>Tunstall</td>
+                <td>55</td>
+                <td>Keyingham (56), Skirlaugh (57)</td>
+              </tr>
+              <tr>
+                <td>Heckmondwike</td>
+                <td>Heckmondwike</td>
+                <td>62</td>
+                <td>Sowerby Bridge (61), Thornton (41)</td>
+              </tr>
+              <tr>
+                <td>Holmfirth</td>
+                <td>Holmfirth</td>
+                <td>60</td>
+                <td>Darton (67)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="roc-group20-note">
+          Master posts (red on the map) held VHF radio sets as a backup communication path to Group Control when telephone
+          landlines were unavailable. Tunstall (post 20/M2) was the master from 1975 to stand-down in 1991.
+          The cluster boundary lines shown on the map correspond to the green sector markings on the original ringbell.co.uk operational map.
+        </p>
+      </section>
+
+      <section class="roc-process" aria-labelledby="roc-roles-title">
+        <div>
+          <p class="roc-kicker">Volunteer roles</p>
+          <h2 id="roc-roles-title">People behind the plots</h2>
+        </div>
+        <ol>
+          <li>
+            <strong>Post Observer</strong>
+            <span>Maintained watch, read instruments, and passed concise reports to Group Control.</span>
+          </li>
+          <li>
+            <strong>Chief Observer</strong>
+            <span>Led the post crew, checked readings, and kept reports consistent during exercises.</span>
+          </li>
+          <li>
+            <strong>Scientific Team</strong>
+            <span>Interpreted burst, pressure, weather, and radiation data for warning decisions.</span>
+          </li>
+        </ol>
+      </section>
+
+      <section class="roc-sources" aria-labelledby="roc-sources-title">
+        <h2 id="roc-sources-title">Further reading</h2>
+        <p>
+          This page uses town-level plotting for Group Controls and the full Group 20 cluster topology from the
+          March 1989 ringbell.co.uk operational map. Sources are grouped by topic and avoid access guidance for
+          private or unsafe sites.
+        </p>
+        <div class="roc-source-groups">
+          <div>
+            <h3>History &amp; context</h3>
+            <ul>
+              <li><a href="https://www.subbrit.org.uk/features/royal-observer-corps/">SubBrit: Royal Observer Corps feature</a></li>
+              <li><a href="https://www.roc-heritage.co.uk/">ROC Heritage Team</a></li>
+              <li><a href="https://en.wikipedia.org/wiki/Royal_Observer_Corps">Wikipedia: Royal Observer Corps</a></li>
+              <li><a href="https://www.ringbell.co.uk/ukwmo/Page220.htm">Ringbell: UKWMO network overview</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Group 20 — York</h3>
+            <ul>
+              <li><a href="https://www.english-heritage.org.uk/visit/places/york-cold-war-bunker/">York Cold War Bunker (English Heritage)</a></li>
+              <li><a href="https://www.subbrit.org.uk/sites/acomb-york-roc-group-hq/">SubBrit: Acomb York ROC Group HQ</a></li>
+              <li><a href="https://www.ringbell.co.uk/ukwmo/Page221.htm">Ringbell: Group 20 monitoring post map (March 1989)</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Post records</h3>
+            <ul>
+              <li><a href="https://www.subbrit.org.uk/sites/northolt-roc-post/">Northolt ROC Post</a></li>
+              <li><a href="https://www.subbrit.org.uk/sites/bowes-park-roc-post/">Bowes Park ROC Post</a></li>
+              <li><a href="https://www.subbrit.org.uk/sites/dulwich-roc-post/">Dulwich ROC Post</a></li>
+              <li><a href="https://www.subbrit.org.uk/sites/">SubBrit public site index</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Instruments</h3>
+            <ul>
+              <li><a href="https://en.wikipedia.org/wiki/Operational_instruments_of_the_Royal_Observer_Corps">Operational instruments overview</a></li>
+              <li><a href="https://www.subbrit.org.uk/sites/brampton-roc-post/">Brampton ROC Post</a></li>
+              <li><a href="https://www.subbrit.org.uk/sites/burscough-roc-post/">Burscough ROC Post</a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="footer-brand"><strong>Welbourne Security</strong><span>Cyber intelligence portfolio and local browser tools.</span></div>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="https://welbournesecurity.com/">Home</a><a href="https://welbournesecurity.com/projects/">Projects</a><a href="https://welbournesecurity.com/writeups/">Writeups</a><a href="https://welbournesecurity.com/tools/">Tools</a><a href="https://welbournesecurity.com/credentials/">Credentials</a><a href="https://welbournesecurity.com/about/">About</a><a href="mailto:info@welbournesecurity.com">Email</a>
+      </nav>
+    </footer>
+</body>
+</html>
