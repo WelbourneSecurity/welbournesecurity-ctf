@@ -1,0 +1,11 @@
+# GitHub Pages (Jekyll) config for ctf.welbournesecurity.com
+#
+# Solve.md files are author solution writeups. They are kept in the repo for
+# reference but EXCLUDED from the published site so they don't spoil the live
+# challenges. Brief.md files (the non-spoiler prompts) are allowed to publish.
+exclude:
+  - baker-street-affair/Solve.md
+  - cabinet-noir/Solve.md
+  - concordat/Solve.md
+  - rg-1421z/Solve.md
+  - section-iii/Solve.md
