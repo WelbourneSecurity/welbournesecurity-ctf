@@ -2567,9 +2567,11 @@ body.light-mode .theme-toggle {
 .hero {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
+  grid-template-columns: 1fr; /* CTF archive: single-column, centered hero (no visual panel) */
   gap: 2.35rem;
-  align-items: center;
+  align-items: start;
+  justify-items: center;
+  text-align: center;
   isolation: isolate;
   min-height: calc(92svh - var(--header-height));
   padding: 0.55rem 0 2rem;
@@ -2578,7 +2580,7 @@ body.light-mode .theme-toggle {
 .hero-copy {
   position: relative;
   z-index: 2;
-  max-width: 34rem;
+  max-width: 56rem;
   opacity: 0;
   transform: translateY(24px);
   animation: rise-in 700ms ease forwards;
@@ -2613,13 +2615,13 @@ body.light-mode .theme-toggle {
 }
 
 .hero h1 {
-  font-size: 5rem;
+  font-size: clamp(2.6rem, 6vw, 4.6rem);
   text-wrap: balance;
 }
 
 .hero-summary {
-  max-width: 31rem;
-  margin: 1.15rem 0 0;
+  max-width: 48rem;
+  margin: 1.15rem auto 0;
   color: var(--muted);
   font-size: 1.08rem;
   line-height: 1.75;
