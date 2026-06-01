@@ -3,366 +3,120 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cold War Communications — Concordat | Welbourne Security</title>
-    <meta
-      name="description"
-      content="An educational tribute to Cold War intelligence communications — three services in parallel: British SIGINT, American case-handling, and Soviet cryptography, looking at one week across the Iron Curtain in March 1989."
-    />
+    <title>CONCORDAT | Welbourne Security CTF Archive</title>
+    <meta name="description" content="CONCORDAT — a three-leg Cold War cryptography challenge from Pwn2Play. All task files, brief, and solution." />
     <meta name="robots" content="index,follow" />
-    <meta name="referrer" content="no-referrer" />
-    <meta name="theme-color" content="#020405" />
+    <meta name="theme-color" content="#071018" />
     <link rel="canonical" href="https://ctf.welbournesecurity.com/concordat/" />
     <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/styles.css?v=1" />
-    <style>
-      .concordat-alphabets {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 1.4rem;
-        margin-top: 1.4rem;
-      }
-      @media (max-width: 720px) {
-        .concordat-alphabets { grid-template-columns: 1fr; }
-      }
-      .concordat-alphabet {
-        border: 1px solid var(--line);
-        background: rgba(255, 255, 255, 0.015);
-        padding: 1rem 1rem 1.1rem;
-        border-radius: 4px;
-      }
-      .concordat-alphabet-head {
-        display: flex;
-        align-items: baseline;
-        justify-content: space-between;
-        margin-bottom: 0.7rem;
-        padding-bottom: 0.55rem;
-        border-bottom: 1px dashed var(--line);
-      }
-      .concordat-alphabet-head h3 {
-        font-family: "IBM Plex Mono", "Space Grotesk", monospace;
-        font-size: 0.82rem;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-        color: var(--text, #e9ecef);
-        margin: 0;
-      }
-      .concordat-alphabet-head span {
-        font-family: "IBM Plex Mono", monospace;
-        font-size: 0.7rem;
-        letter-spacing: 0.1em;
-        color: var(--muted, #8a949c);
-      }
-      .concordat-alphabet-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(2.4rem, 1fr));
-        gap: 0.35rem;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        font-family: "IBM Plex Mono", monospace;
-      }
-      .concordat-alphabet-grid li {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.1rem;
-        padding: 0.3rem 0.2rem;
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        border-radius: 3px;
-        background: rgba(255, 255, 255, 0.02);
-      }
-      .concordat-alphabet-grid li span {
-        font-size: 0.6rem;
-        letter-spacing: 0.04em;
-        color: var(--muted, #8a949c);
-      }
-      .concordat-alphabet-grid li strong {
-        font-size: 0.95rem;
-        font-weight: 500;
-        color: var(--text, #e9ecef);
-      }
-      .concordat-alphabet-grid li.is-yo {
-        border-color: rgba(110, 242, 199, 0.25);
-        background: rgba(110, 242, 199, 0.04);
-      }
-      .concordat-alphabet-caption {
-        margin: 0.9rem 0 0;
-        font-size: 0.85rem;
-        color: var(--muted, #8a949c);
-      }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css?v=3" />
   </head>
-  <body class="roc-page concordat-page">
+  <body>
     <a class="skip-to-content" href="#top">Skip to main content</a>
-    <header class="site-header">
-      <a class="brand" href="https://welbournesecurity.com/" aria-label="Back to home">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 48 48" focusable="false">
-            <circle cx="24" cy="24" r="18" class="brand-mark-ring"></circle>
-            <circle cx="24" cy="24" r="11" class="brand-mark-ring"></circle>
-            <path d="M24 6 V42" class="brand-mark-grid"></path>
-            <path d="M6 24 H42" class="brand-mark-grid"></path>
-            <circle cx="24" cy="24" r="3.2" class="brand-mark-core"></circle>
-            <path d="M24 6 A18 18 0 0 1 42 24" class="brand-mark-sweep"></path>
-          </svg>
-        </span>
-        <span class="brand-copy"><strong>Welbourne Security</strong><small>Concordat</small></span>
-      </a>
-      <div class="header-actions">
-        <nav class="site-nav" aria-label="Primary navigation">
-          <a href="https://welbournesecurity.com/">Home</a>
-          <a href="https://welbournesecurity.com/projects/" aria-current="page">Projects</a>
-          <a href="https://welbournesecurity.com/writeups/">Writeups</a>
-          <a href="https://welbournesecurity.com/tools/">Tools</a>
-          <a href="https://welbournesecurity.com/#contact">Contact</a>
-        </nav>
-        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle light and dark mode"><span class="theme-toggle-label">Light Mode</span></button>
-      </div>
-    </header>
-    <main id="top" class="roc-shell" aria-label="Cold War communications — Concordat educational tribute">
-      <aside aria-label="Archive — challenge files" style="max-width:880px;margin:1.4rem auto 0;padding:1rem 1.2rem;border:1px solid var(--line);background:rgba(255,255,255,0.03);font-family:'IBM Plex Mono',monospace;">
-        <p style="margin:0 0 0.5rem;font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:#e8b48c;">Archive · all challenge files</p>
-        <ul style="margin:0;padding-left:1.1rem;line-height:1.9;font-size:0.88rem;color:var(--muted);">
-          <li><a href="Brief.md" style="color:inherit;">Brief</a> — challenge prompt</li>
-          <li><a href="Solve.md" style="color:inherit;">Solution</a> — spoiler</li>
-          <li><a href="intercepts/intercept-a/" style="color:inherit;">Intercept A — British SIGINT</a></li>
-          <li><a href="intercepts/intercept-b/cable.html" style="color:inherit;">Intercept B — American cable</a></li>
-          <li><a href="intercepts/intercept-c/" style="color:inherit;">Intercept C — Soviet telegram</a></li>
-          <li><a href="operator/" style="color:inherit;">Operator workstation</a></li>
-          <li><a href="/section-iii/" style="color:inherit;">Section III inbox</a></li>
-          <li><a href="/ops/sked.txt" style="color:inherit;">Y-section watch schedule (ops/sked.txt)</a></li>
-        </ul>
-      </aside>
-      <header class="roc-hero">
-        <div class="roc-hero-copy">
-          <p class="roc-kicker">Concordat · Educational tribute</p>
-          <h1>Cold War Communications</h1>
-          <p>
-            A look at Cold War intelligence communications through three services running
-            in parallel: British signals intelligence at GCHQ and the BBC Monitoring Service Y-Section,
-            American case-handling out of CIA Station Rome, and Soviet cryptographic discipline at the
-            Lubyanka. Each service produced a different kind of artefact; together they show how the
-            same week of intelligence could appear across the Iron Curtain.
-          </p>
-        </div>
-        <div class="roc-hero-side">
-          <div class="roc-facts" aria-label="At a glance">
-            <div>
-              <strong>3</strong>
-              <span>services profiled — MI6, CIA, KGB</span>
-            </div>
-            <div>
-              <strong>1989</strong>
-              <span>March, the week in focus</span>
-            </div>
-            <div>
-              <strong>3</strong>
-              <span>distinct communications traditions</span>
-            </div>
-          </div>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="/" aria-label="Back to CTF archive">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 48 48" focusable="false">
+              <circle cx="24" cy="24" r="18" class="brand-mark-ring"></circle>
+              <circle cx="24" cy="24" r="11" class="brand-mark-ring"></circle>
+              <path d="M24 6 V42" class="brand-mark-grid"></path>
+              <path d="M6 24 H42" class="brand-mark-grid"></path>
+              <circle cx="24" cy="24" r="3.2" class="brand-mark-core"></circle>
+              <path d="M24 6 A18 18 0 0 1 42 24" class="brand-mark-sweep"></path>
+            </svg>
+          </span>
+          <span class="brand-copy"><strong>Welbourne Security</strong><small>CTF Archive</small></span>
+        </a>
+        <div class="header-actions">
+          <nav class="site-nav" aria-label="Primary navigation">
+            <a href="/">Archive</a>
+            <a href="https://welbournesecurity.com/">Main site</a>
+            <a href="https://welbournesecurity.com/writeups/">Writeups</a>
+          </nav>
         </div>
       </header>
 
-      <section class="roc-briefing" aria-labelledby="concordat-briefing-title">
-        <div class="roc-section-heading">
-          <p class="roc-kicker">Network primer</p>
-          <h2 id="concordat-briefing-title">Three back rooms, one week of weather</h2>
-          <p>
-            In the spring of 1989 the Cold War still ran on shortwave, paper, and the patience of
-            people in back rooms. GCHQ kept its watch positions humming under the Cotswolds.
-            Langley moved cable traffic across an Atlantic that was always darker than it looked.
-            The Lubyanka teletype never quite stopped clattering. None of these services spoke
-            to one another in the way the briefing rooms imagined — but for a few hours, on a
-            few mornings, they were all listening to the same world.
-          </p>
-        </div>
-
-        <div class="roc-knowledge-grid">
-          <article class="roc-chain">
-            <h3>The watch</h3>
-            <p>
-              The Section worked off a <a href="/ops/sked.txt" style="color:inherit;text-decoration:none;">watch schedule</a>
-              that had been drafted, redrafted, and quietly handed between rooms for the better
-              part of a decade. The schedule said where to listen. It did not say what would
-              be heard.
-            </p>
-          </article>
-
-          <article class="roc-chain">
-            <h3>The desk</h3>
-            <p>
-              Three services. Three desks. A British operative who never gave a name. An
-              American case officer who answered to a cryptonym. A Soviet liaison who, by all
-              accounts, did not believe the liaison was happening. The wires never quite met.
-              The traffic was always one transcript away from being someone else's problem.
-            </p>
-          </article>
-
-          <article class="roc-chain">
-            <h3>The week</h3>
-            <p>
-              13 to 14 March 1989. A shortwave intercept, a released cable, a Lubyanka-inbound
-              telegram. Each artefact landed in a different inbox by a different route. The
-              Section that pulled them together first never claimed the credit. The project
-              is named for that quiet act of agreement.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="roc-briefing" aria-labelledby="concordat-alphabets-title">
-        <div class="roc-section-heading">
-          <p class="roc-kicker">Two alphabets, one teleprinter desk</p>
-          <h2 id="concordat-alphabets-title">Latin twenty-six, Cyrillic thirty-three</h2>
-          <p>
-            On either side of the Iron Curtain the day's traffic was still tapped out by hand
-            on heavy machines. A Western teleprinter desk worked twenty-six letters, A through Z,
-            and the operators measured their reels in characters per minute. A Soviet desk worked
-            a longer keyboard — thirty-three letters in the standard ordering, with Ё counted
-            separately at position seven where modern dictionaries still hesitate. The BBC
-            Monitoring Service's translation desks at Caversham kept both layouts in their
-            heads at once, and the cryptographers on both sides built their schemes around
-            whichever alphabet sat under their fingers.
-          </p>
-        </div>
-
-        <div class="concordat-alphabets">
-          <article class="concordat-alphabet" aria-labelledby="alpha-latin-title">
-            <header class="concordat-alphabet-head">
-              <h3 id="alpha-latin-title">Latin</h3>
-              <span>26 letters · mod 26</span>
-            </header>
-            <ol class="concordat-alphabet-grid" aria-label="Latin alphabet, A to Z">
-              <li><span>1</span><strong>A</strong></li>
-              <li><span>2</span><strong>B</strong></li>
-              <li><span>3</span><strong>C</strong></li>
-              <li><span>4</span><strong>D</strong></li>
-              <li><span>5</span><strong>E</strong></li>
-              <li><span>6</span><strong>F</strong></li>
-              <li><span>7</span><strong>G</strong></li>
-              <li><span>8</span><strong>H</strong></li>
-              <li><span>9</span><strong>I</strong></li>
-              <li><span>10</span><strong>J</strong></li>
-              <li><span>11</span><strong>K</strong></li>
-              <li><span>12</span><strong>L</strong></li>
-              <li><span>13</span><strong>M</strong></li>
-              <li><span>14</span><strong>N</strong></li>
-              <li><span>15</span><strong>O</strong></li>
-              <li><span>16</span><strong>P</strong></li>
-              <li><span>17</span><strong>Q</strong></li>
-              <li><span>18</span><strong>R</strong></li>
-              <li><span>19</span><strong>S</strong></li>
-              <li><span>20</span><strong>T</strong></li>
-              <li><span>21</span><strong>U</strong></li>
-              <li><span>22</span><strong>V</strong></li>
-              <li><span>23</span><strong>W</strong></li>
-              <li><span>24</span><strong>X</strong></li>
-              <li><span>25</span><strong>Y</strong></li>
-              <li><span>26</span><strong>Z</strong></li>
-            </ol>
-          </article>
-
-          <article class="concordat-alphabet" aria-labelledby="alpha-cyrillic-title">
-            <header class="concordat-alphabet-head">
-              <h3 id="alpha-cyrillic-title">Cyrillic (Russian)</h3>
-              <span>33 letters · mod 33</span>
-            </header>
-            <ol class="concordat-alphabet-grid" aria-label="Russian Cyrillic alphabet, А to Я">
-              <li><span>1</span><strong>А</strong></li>
-              <li><span>2</span><strong>Б</strong></li>
-              <li><span>3</span><strong>В</strong></li>
-              <li><span>4</span><strong>Г</strong></li>
-              <li><span>5</span><strong>Д</strong></li>
-              <li><span>6</span><strong>Е</strong></li>
-              <li class="is-yo"><span>7</span><strong>Ё</strong></li>
-              <li><span>8</span><strong>Ж</strong></li>
-              <li><span>9</span><strong>З</strong></li>
-              <li><span>10</span><strong>И</strong></li>
-              <li><span>11</span><strong>Й</strong></li>
-              <li><span>12</span><strong>К</strong></li>
-              <li><span>13</span><strong>Л</strong></li>
-              <li><span>14</span><strong>М</strong></li>
-              <li><span>15</span><strong>Н</strong></li>
-              <li><span>16</span><strong>О</strong></li>
-              <li><span>17</span><strong>П</strong></li>
-              <li><span>18</span><strong>Р</strong></li>
-              <li><span>19</span><strong>С</strong></li>
-              <li><span>20</span><strong>Т</strong></li>
-              <li><span>21</span><strong>У</strong></li>
-              <li><span>22</span><strong>Ф</strong></li>
-              <li><span>23</span><strong>Х</strong></li>
-              <li><span>24</span><strong>Ц</strong></li>
-              <li><span>25</span><strong>Ч</strong></li>
-              <li><span>26</span><strong>Ш</strong></li>
-              <li><span>27</span><strong>Щ</strong></li>
-              <li><span>28</span><strong>Ъ</strong></li>
-              <li><span>29</span><strong>Ы</strong></li>
-              <li><span>30</span><strong>Ь</strong></li>
-              <li><span>31</span><strong>Э</strong></li>
-              <li><span>32</span><strong>Ю</strong></li>
-              <li><span>33</span><strong>Я</strong></li>
-            </ol>
-          </article>
-        </div>
-
-        <p class="concordat-alphabet-caption">
-          Where a Western field cipher rolled its arithmetic over twenty-six, a Soviet desk
-          rolled over thirty-three. The seven-letter offset wasn't a curiosity — it was the
-          quiet reason an intercepted Lubyanka group never quite looked like anything a
-          Bletchley veteran was used to.
-        </p>
-      </section>
-
-      <section class="roc-sources" aria-labelledby="concordat-sources-title">
-        <h2 id="concordat-sources-title">Further reading</h2>
-        <p>
-          This page is an educational tribute. The reading below is general historical
-          context — the institutions, the period, the people in the back rooms.
-        </p>
-        <div class="roc-source-groups">
-          <div>
-            <h3>British</h3>
-            <ul>
-              <li><a href="https://en.wikipedia.org/wiki/BBC_Monitoring">Wikipedia: BBC Monitoring</a></li>
-              <li><a href="https://en.wikipedia.org/wiki/GCHQ">Wikipedia: GCHQ</a></li>
-            </ul>
+      <main id="top">
+        <section class="hero" style="min-height: auto; padding-block: 3rem 1.5rem;">
+          <div class="hero-copy">
+            <p class="eyebrow hero-eyebrow">Crypto · Multi-leg · Pwn2Play 2026</p>
+            <h1>CONCORDAT</h1>
+            <p class="hero-summary">Three Cold War intercepts — British SIGINT, American case-handling, Soviet cryptography — one week in March 1989. Recover a fragment from each leg and assemble the combined flag at the operator workstation.</p>
           </div>
-          <div>
-            <h3>American</h3>
-            <ul>
-              <li><a href="https://en.wikipedia.org/wiki/Central_Intelligence_Agency">Wikipedia: Central Intelligence Agency</a></li>
-              <li><a href="https://www.cia.gov/readingroom/">CIA Reading Room — FOIA archive</a></li>
-            </ul>
+        </section>
+
+        <section class="section">
+          <div class="section-intro">
+            <p class="eyebrow">Challenge files</p>
+            <h2>Open anything you like.</h2>
           </div>
-          <div>
-            <h3>Soviet</h3>
-            <ul>
-              <li><a href="https://en.wikipedia.org/wiki/KGB">Wikipedia: KGB</a></li>
-              <li><a href="https://en.wikipedia.org/wiki/First_Chief_Directorate">Wikipedia: First Chief Directorate</a></li>
-            </ul>
+          <div class="ctf-files-grid">
+            <a class="ctf-file-card" href="intercepts/intercept-a/">
+              <span>Playable</span>
+              <strong>Intercept A — WAVERLY</strong>
+              <p>MI6 — British SIGINT numbers station (one-time pad).</p>
+            </a>
+            <a class="ctf-file-card" href="intercepts/intercept-b/cable.html">
+              <span>Playable</span>
+              <strong>Intercept B — SOLO</strong>
+              <p>CIA — redacted Station Rome cable.</p>
+            </a>
+            <a class="ctf-file-card" href="intercepts/intercept-c/">
+              <span>Playable</span>
+              <strong>Intercept C — KURYAKIN</strong>
+              <p>KGB — Soviet Vigenère telegram.</p>
+            </a>
+            <a class="ctf-file-card" href="operator/">
+              <span>Playable</span>
+              <strong>Operator workstation</strong>
+              <p>Assemble the three fragments into the combined flag.</p>
+            </a>
+            <a class="ctf-file-card" href="/section-iii/">
+              <span>Playable</span>
+              <strong>Section III inbox</strong>
+              <p>The discovery inbox that queues the three intercept legs.</p>
+            </a>
+            <a class="ctf-file-card" href="tribute/">
+              <span>Playable</span>
+              <strong>Concordat — educational tribute</strong>
+              <p>Background page on the three services (the original entry point).</p>
+            </a>
+            <a class="ctf-file-card" href="/ops/sked.txt" download>
+              <span>Download</span>
+              <strong>ops/sked.txt</strong>
+              <p>The BBC Y-section watch schedule — the hidden trail.</p>
+            </a>
+            <a class="ctf-file-card" href="Brief.md">
+              <span>Writeup</span>
+              <strong>Brief</strong>
+              <p>Challenge prompt and objective — non-spoiler.</p>
+            </a>
+            <a class="ctf-file-card" href="Solve.md">
+              <span>Writeup · spoiler</span>
+              <strong>Solution</strong>
+              <p>Full author walkthrough and the flag.</p>
+            </a>
           </div>
-          <div>
-            <h3>General</h3>
-            <ul>
-              <li><a href="https://en.wikipedia.org/wiki/Cold_War_espionage">Wikipedia: Cold War espionage</a></li>
-              <li><a href="https://en.wikipedia.org/wiki/Tradecraft">Wikipedia: Tradecraft</a></li>
-            </ul>
-          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="footer-brand">
+          <strong>Welbourne Security · CTF Archive</strong>
+          <span>Playable past challenges. <a href="/" style="color: inherit;">Back to all challenges.</a></span>
         </div>
-      </section>
-    </main>
-    <footer class="site-footer">
-      <div class="footer-brand"><strong>Welbourne Security</strong><span>Cyber intelligence portfolio and local browser tools.</span></div>
-      <nav class="footer-links" aria-label="Footer navigation">
-        <a href="https://welbournesecurity.com/">Home</a><a href="https://welbournesecurity.com/projects/">Projects</a><a href="https://welbournesecurity.com/writeups/">Writeups</a><a href="https://welbournesecurity.com/tools/">Tools</a><a href="https://welbournesecurity.com/credentials/">Credentials</a><a href="https://welbournesecurity.com/about/">About</a><a href="mailto:info@welbournesecurity.com">Email</a>
-      </nav>
-    </footer>
-    <script type="module" src="/js/page.js"></script>
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="/">Archive</a>
+          <a href="https://welbournesecurity.com/">Home</a>
+          <a href="https://welbournesecurity.com/writeups/">Writeups</a>
+          <a href="mailto:info@welbournesecurity.com">Email</a>
+        </nav>
+        <p class="footer-note"><span>ctf.welbournesecurity.com</span><span>CONCORDAT</span></p>
+      </footer>
+    </div>
   </body>
 </html>

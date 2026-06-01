@@ -12,33 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/styles.css?v=1" />
-    <style>
-      .ctf-files-grid {
-        display: grid;
-        gap: 1rem;
-        grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
-        margin-top: 1.6rem;
-      }
-      .ctf-file-card {
-        display: grid;
-        gap: 0.5rem;
-        padding: 1.2rem;
-        border: 1px solid var(--line);
-        background: linear-gradient(180deg, rgba(7, 9, 11, 0.88), rgba(1, 2, 3, 0.94));
-        color: inherit;
-        text-decoration: none;
-        align-content: start;
-        transition: transform 0.18s ease, border-color 0.18s ease;
-      }
-      .ctf-file-card:hover,
-      .ctf-file-card:focus-visible { border-color: var(--accent); transform: translateY(-2px); }
-      body.light-mode .ctf-file-card { background: rgba(255, 255, 255, 0.82); }
-      .ctf-file-card span { color: var(--accent-warm); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; }
-      .ctf-file-card strong { font-family: "Space Grotesk", sans-serif; font-size: 1.05rem; }
-      .ctf-file-card p { color: var(--muted); line-height: 1.6; margin: 0; font-size: 0.9rem; }
-      .ctf-file-group-label { margin: 2rem 0 0; font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-warm); }
-    </style>
+    <link rel="stylesheet" href="/styles.css?v=3" />
   </head>
   <body>
     <a class="skip-to-content" href="#top">Skip to main content</a>
@@ -69,9 +43,9 @@
       <main id="top">
         <section class="hero" style="min-height: auto; padding-block: 3rem 1.5rem;">
           <div class="hero-copy">
-            <p class="eyebrow hero-eyebrow">Miscellaneous · Pwn2Play 2026</p>
+            <p class="eyebrow hero-eyebrow">Misc · Pwn2Play 2026</p>
             <h1>BIKINI State: RED</h1>
-            <p class="hero-summary">A recovered UKWMO / Royal Observer Corps exercise. Convert three monitoring-post flash bearings to true bearings, plot them on the Group Control workstation, and identify the site at the fix. Everything below is preserved so you can replay it or read how it was solved.</p>
+            <p class="hero-summary">A recovered UKWMO / Royal Observer Corps exercise. Convert three monitoring-post flash bearings to true bearings, plot them on the Group Control workstation, and identify the site at the fix.</p>
           </div>
         </section>
 
@@ -80,61 +54,51 @@
             <p class="eyebrow">Challenge files</p>
             <h2>Open anything you like.</h2>
           </div>
-
-          <p class="ctf-file-group-label">Start here</p>
           <div class="ctf-files-grid">
             <a class="ctf-file-card" href="/rg-1421z/">
-              <span>Playable · entry</span>
+              <span>Playable</span>
               <strong>20 Group York Control inbox</strong>
-              <p>The RG-1421z inbox. Download the three post reports and the exercise brief.</p>
+              <p>The RG-1421z inbox — the three post reports and the exercise brief.</p>
             </a>
             <a class="ctf-file-card" href="/roc-network/">
-              <span>Playable · tool</span>
+              <span>Playable</span>
               <strong>Group Control plotting workstation</strong>
               <p>Interactive ROC map + triangulation calculator. Enter the true bearings to get the fix.</p>
             </a>
-            <a class="ctf-file-card" href="/rg-1421z/bikini-state-red.txt" download>
-              <span>Brief · download</span>
-              <strong>bikini-state-red.txt</strong>
-              <p>The in-exercise brief — objective and flag format (<code>P2P{SITENAME_NICKNAME}</code>).</p>
-            </a>
-          </div>
-
-          <p class="ctf-file-group-label">Post reports</p>
-          <div class="ctf-files-grid">
             <a class="ctf-file-card" href="/rg-1421z/reports/REPORT_A_TUNSTALL_55.txt" download>
-              <span>Report · download</span>
+              <span>Download</span>
               <strong>Report A — Tunstall 20/55</strong>
               <p>Master-post traffic sheet: GZI flash bearing + card error.</p>
             </a>
             <a class="ctf-file-card" href="/rg-1421z/reports/REPORT_B_KEYINGHAM_56.txt" download>
-              <span>Report · download</span>
+              <span>Download</span>
               <strong>Report B — Keyingham 20/56</strong>
               <p>Satellite-post traffic sheet: GZI flash bearing + card error.</p>
             </a>
             <a class="ctf-file-card" href="/rg-1421z/reports/REPORT_C_SKIRLAUGH_57.txt" download>
-              <span>Report · download</span>
+              <span>Download</span>
               <strong>Report C — Skirlaugh 20/57</strong>
               <p>Satellite-post traffic sheet: GZI flash bearing + card error.</p>
             </a>
-            <a class="ctf-file-card" href="/ops/traffic.txt" download>
-              <span>Breadcrumb · download</span>
-              <strong>ops/traffic.txt</strong>
-              <p>The UKWMO routing slip that leads to the unlinked Group Control workstation.</p>
+            <a class="ctf-file-card" href="/rg-1421z/bikini-state-red.txt" download>
+              <span>Download</span>
+              <strong>bikini-state-red.txt</strong>
+              <p>The in-exercise brief — objective and flag format.</p>
             </a>
-          </div>
-
-          <p class="ctf-file-group-label">Writeup</p>
-          <div class="ctf-files-grid">
+            <a class="ctf-file-card" href="/ops/traffic.txt" download>
+              <span>Download</span>
+              <strong>ops/traffic.txt</strong>
+              <p>The UKWMO routing slip that leads to the unlinked workstation.</p>
+            </a>
             <a class="ctf-file-card" href="Brief.md">
-              <span>Doc</span>
-              <strong>Brief.md</strong>
-              <p>Challenge prompt, objective, and the pieces — non-spoiler.</p>
+              <span>Writeup</span>
+              <strong>Brief</strong>
+              <p>Challenge prompt and objective — non-spoiler.</p>
             </a>
             <a class="ctf-file-card" href="Solve.md">
-              <span>Doc · spoiler</span>
-              <strong>Solve.md</strong>
-              <p>Full author solution and the flag. Spoilers — open only if you want the answer.</p>
+              <span>Writeup · spoiler</span>
+              <strong>Solution</strong>
+              <p>Full author walkthrough and the flag.</p>
             </a>
           </div>
         </section>

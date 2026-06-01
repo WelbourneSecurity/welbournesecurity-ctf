@@ -12,17 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/styles.css?v=1" />
-    <style>
-      .ctf-files-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr)); margin-top: 1.6rem; }
-      .ctf-file-card { display: grid; gap: 0.5rem; padding: 1.2rem; border: 1px solid var(--line); background: linear-gradient(180deg, rgba(7,9,11,0.88), rgba(1,2,3,0.94)); color: inherit; text-decoration: none; align-content: start; transition: transform 0.18s ease, border-color 0.18s ease; }
-      .ctf-file-card:hover, .ctf-file-card:focus-visible { border-color: var(--accent); transform: translateY(-2px); }
-      body.light-mode .ctf-file-card { background: rgba(255,255,255,0.82); }
-      .ctf-file-card span { color: var(--accent-warm); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; }
-      .ctf-file-card strong { font-family: "Space Grotesk", sans-serif; font-size: 1.05rem; }
-      .ctf-file-card p { color: var(--muted); line-height: 1.6; margin: 0; font-size: 0.9rem; }
-      .ctf-ext-note { margin-top: 1.4rem; padding: 1rem 1.2rem; border: 1px dashed var(--line); color: var(--muted); font-size: 0.9rem; }
-    </style>
+    <link rel="stylesheet" href="/styles.css?v=3" />
   </head>
   <body>
     <a class="skip-to-content" href="#top">Skip to main content</a>
@@ -65,18 +55,22 @@
             <h2>Open anything you like.</h2>
           </div>
           <div class="ctf-files-grid">
+            <a class="ctf-file-card" href="https://dmuhackers.com" target="_blank" rel="noreferrer">
+              <span>External</span>
+              <strong>dmuhackers.com</strong>
+              <p>The live challenge — the four flags are hidden across the DMUHackers website.</p>
+            </a>
             <a class="ctf-file-card" href="Brief.md">
-              <span>Doc</span>
-              <strong>Brief.md</strong>
+              <span>Writeup</span>
+              <strong>Brief</strong>
               <p>Challenge prompt and objective — non-spoiler.</p>
             </a>
             <a class="ctf-file-card" href="Solve.md">
-              <span>Doc · spoiler</span>
-              <strong>Solve.md</strong>
-              <p>Author solution and flag. Spoilers.</p>
+              <span>Writeup · spoiler</span>
+              <strong>Solution</strong>
+              <p>Full author walkthrough and the four flags.</p>
             </a>
           </div>
-          <p class="ctf-ext-note">Live challenge: <a href="https://dmuhackers.com" target="_blank" rel="noreferrer">dmuhackers.com</a> — the four flags are hidden across the DMUHackers website.</p>
         </section>
       </main>
 
