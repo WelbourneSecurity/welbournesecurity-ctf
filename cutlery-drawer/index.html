@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Cutlery Drawer | Welbourne Security CTF Archive</title>
-    <meta name="description" content="The Cutlery Drawer — an OSINT challenge from Pwn2Play. Brief and solution." />
+    <meta name="description" content="The Cutlery Drawer — an OSINT challenge from Pwn2Play. Provided image, brief, and solution." />
     <meta name="robots" content="index,follow" />
     <meta name="theme-color" content="#071018" />
     <link rel="canonical" href="https://ctf.welbournesecurity.com/cutlery-drawer/" />
@@ -12,17 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/styles.css?v=1" />
-    <style>
-      .ctf-files-grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr)); margin-top: 1.6rem; }
-      .ctf-file-card { display: grid; gap: 0.5rem; padding: 1.2rem; border: 1px solid var(--line); background: linear-gradient(180deg, rgba(7,9,11,0.88), rgba(1,2,3,0.94)); color: inherit; text-decoration: none; align-content: start; transition: transform 0.18s ease, border-color 0.18s ease; }
-      .ctf-file-card:hover, .ctf-file-card:focus-visible { border-color: var(--accent); transform: translateY(-2px); }
-      body.light-mode .ctf-file-card { background: rgba(255,255,255,0.82); }
-      .ctf-file-card span { color: var(--accent-warm); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; }
-      .ctf-file-card strong { font-family: "Space Grotesk", sans-serif; font-size: 1.05rem; }
-      .ctf-file-card p { color: var(--muted); line-height: 1.6; margin: 0; font-size: 0.9rem; }
-      .ctf-ext-note { margin-top: 1.4rem; padding: 1rem 1.2rem; border: 1px dashed var(--line); color: var(--muted); font-size: 0.9rem; }
-    </style>
+    <link rel="stylesheet" href="/styles.css?v=2" />
   </head>
   <body>
     <a class="skip-to-content" href="#top">Skip to main content</a>
@@ -55,7 +45,7 @@
           <div class="hero-copy">
             <p class="eyebrow hero-eyebrow">OSINT · Pwn2Play 2026</p>
             <h1>The Cutlery Drawer</h1>
-            <p class="hero-summary">Everything has a place — find what's been hidden in plain sight across open sources. An open-source-intelligence challenge; this page holds the brief and the solution.</p>
+            <p class="hero-summary">Everything has a place — find what's been hidden in plain sight across open sources. Identify the venue from a single image and submit the name of the place.</p>
           </div>
         </section>
 
@@ -66,19 +56,19 @@
           </div>
           <div class="ctf-files-grid">
             <a class="ctf-file-card" href="OSINT.jpeg" download>
-              <span>Provided file</span>
+              <span>Download</span>
               <strong>OSINT.jpeg</strong>
               <p>The single image given to players. Metadata stripped — solve it visually.</p>
             </a>
             <a class="ctf-file-card" href="Brief.md">
-              <span>Doc</span>
-              <strong>Brief.md</strong>
+              <span>Writeup</span>
+              <strong>Brief</strong>
               <p>Challenge prompt and objective — non-spoiler.</p>
             </a>
             <a class="ctf-file-card" href="Solve.md">
-              <span>Doc · spoiler</span>
-              <strong>Solve.md</strong>
-              <p>Author solution and flag. Spoilers.</p>
+              <span>Writeup · spoiler</span>
+              <strong>Solution</strong>
+              <p>Full author walkthrough and the flag.</p>
             </a>
           </div>
         </section>

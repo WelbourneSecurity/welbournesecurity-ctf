@@ -3,167 +3,110 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Baker Street Affair · Lupin contre Holmes</title>
-    <meta name="description" content="An educational-tribute case file: two documents, two perspectives, one theft. Paris, summer 1908." />
-    <meta name="robots" content="noindex,nofollow" />
-    <meta name="referrer" content="no-referrer" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'self';" />
+    <title>The Baker Street Affair | Welbourne Security CTF Archive</title>
+    <meta name="description" content="The Baker Street Affair — a Belle Époque crypto/stego challenge from Pwn2Play. All task files, brief, and solution." />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#071018" />
+    <link rel="canonical" href="https://ctf.welbournesecurity.com/baker-street-affair/" />
+    <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital,wght@0,400;1,400&family=IM+Fell+DW+Pica:ital@0;1&family=Special+Elite&family=Petit+Formal+Script&family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500;1,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
-    <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
-    <link rel="stylesheet" href="/styles.css?v=1" />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css?v=2" />
   </head>
-  <body class="mod-inbox-page bsa-archive">
-    <main class="bsa-folder">
+  <body>
+    <a class="skip-to-content" href="#top">Skip to main content</a>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="/" aria-label="Back to CTF archive">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 48 48" focusable="false">
+              <circle cx="24" cy="24" r="18" class="brand-mark-ring"></circle>
+              <circle cx="24" cy="24" r="11" class="brand-mark-ring"></circle>
+              <path d="M24 6 V42" class="brand-mark-grid"></path>
+              <path d="M6 24 H42" class="brand-mark-grid"></path>
+              <circle cx="24" cy="24" r="3.2" class="brand-mark-core"></circle>
+              <path d="M24 6 A18 18 0 0 1 42 24" class="brand-mark-sweep"></path>
+            </svg>
+          </span>
+          <span class="brand-copy"><strong>Welbourne Security</strong><small>CTF Archive</small></span>
+        </a>
+        <div class="header-actions">
+          <nav class="site-nav" aria-label="Primary navigation">
+            <a href="/">Archive</a>
+            <a href="https://welbournesecurity.com/">Main site</a>
+            <a href="https://welbournesecurity.com/writeups/">Writeups</a>
+          </nav>
+        </div>
+      </header>
 
-      <!-- Manila-folder tab + classification stamps -->
-      <div class="bsa-folder-tab" aria-hidden="true">
-        <span class="bsa-tab-label">DOSSIER 1908&middot;VII&middot;19</span>
-      </div>
-
-      <div class="bsa-stamp bsa-stamp--classified" aria-hidden="true">
-        <span>Confidentiel</span>
-        <small>Cabinet Noir · Bureau de Lecture</small>
-      </div>
-
-      <div class="bsa-stamp bsa-stamp--vu" aria-hidden="true">
-        <span>VU</span>
-        <small>Insp. Ganimard &mdash; 19.VII.08</small>
-      </div>
-
-      <article class="bsa-paper bsa-paper--cover">
-
-        <header class="bsa-cover-header">
-          <p class="bsa-cover-route">Préfecture de Police · Service de la Sûreté · 36, Quai des Orfèvres</p>
-          <h1 class="bsa-cover-title">The Baker Street Affair</h1>
-          <p class="bsa-cover-sub"><em>Holmes contre Lupin</em> &mdash; an intercepted case file, summer 1908.</p>
-        </header>
-
-        <p class="bsa-cover-lede">
-          Two documents reached the <em>Bureau de Lecture</em> on the same morning,
-          routed through the Hôtel des Postes at <span class="bsa-smallcap">place de la bourse</span>.
-          One bore a London frank and was addressed in a careful, undecorative hand
-          to a Dr. J. H. W., at an address in Marylebone. The other had no postage
-          at all, was sealed in red wax, and was left on a bench at the Gare du
-          Nord beside an opened copy of <em>L'Illustration</em>.
-        </p>
-
-        <section class="bsa-brief-block">
-          <h2 class="bsa-h2">Brief</h2>
-          <p>
-            On the night of the 17th of July, 1908, the diadem of the Empress Eugénie
-            &mdash; mounted by Bapst &amp; Frères, set with thirty-eight brilliants and a
-            single rose-cut stone formerly belonging to Mazarin &mdash; was lifted from the
-            apartments of the Duchesse de Crozon at the Hôtel Britannique, rue de la
-            Paix. The diamonds were not the issue. The issue was that the rose-cut
-            stone, the only piece of the parure that could not be insured, had been
-            replaced, weeks earlier, with a paste copy of remarkable workmanship.
-          </p>
-          <p>
-            The British detective <span class="bsa-name">Mr. Sherlock Holmes</span> was retained by
-            the Préfecture in the morning, on the recommendation of his brother
-            <em>Mycroft</em>, to whom the British Embassy had referred the matter.
-            By the time Mr. Holmes had finished his coffee at the Hôtel, an open
-            letter signed <span class="bsa-name">Arsène Lupin</span> had been folded on
-            the dressing-table, weighted by a single playing card &mdash; the eight of
-            hearts, scratched through diagonally.
-          </p>
-          <p>
-            Both men have since written about the affair. Their accounts disagree;
-            and the Bureau de Lecture, whose business it is to read other people's
-            mail before they do, has now acquired both documents. Your task is the
-            Bureau's: read both, reconcile them, and &mdash; if you can &mdash; determine what
-            the censors at Quai des Orfèvres preferred not to put on record.
-          </p>
-        </section>
-
-        <section class="bsa-rules-block">
-          <h2 class="bsa-h2">Notes for the reader</h2>
-          <ol class="bsa-rules">
-            <li>Each document carries something the other cannot finish without. The shape of one is the key to the other; the shape of the other, when read in the writer's manner, is what the key opens.</li>
-            <li>Mr. Lupin has standing conventions all his own. The courtesy of his correspondents has always been to recognise them, without being told.</li>
-            <li>What the affair returns will not be a thief's name nor a jewel's. It will be a place, ordinary enough that the Pr&eacute;fecture filed it under a registry index and forgot it; ordinary enough that the young man in Lupin's hand &mdash; the one he does not name &mdash; walked into it every morning for six years.</li>
-            <li>The wax seal at the foot of this file is &mdash; as M. Ganimard noted in the margin &mdash; <em>not for ornament</em>. The Cabinet Noir clerks slipped a transcription pr&eacute;cis behind the wax of dossiers they considered politically inconvenient.</li>
-          </ol>
-        </section>
-
-        <section class="bsa-docs-block">
-          <h2 class="bsa-h2">The documents</h2>
-          <div class="bsa-doc-grid">
-            <a class="bsa-doc-card bsa-doc-card--holmes" href="./holmes/">
-              <p class="bsa-doc-eyebrow">London · West-Central · 18 Jul 1908</p>
-              <h3>Holmes &mdash; Case Note</h3>
-              <p>
-                A telegram-style note from the British detective, written in the
-                stick-figure cipher he is known to use only with Dr. Watson and the
-                Cubitt household at Riding Thorpe.
-              </p>
-              <p class="bsa-doc-tag"><span>Open document</span> <span aria-hidden="true">&rsaquo;</span></p>
-            </a>
-            <a class="bsa-doc-card bsa-doc-card--lupin" href="./lupin/">
-              <p class="bsa-doc-eyebrow">Paris &mdash; no postage · 18 Jul 1908</p>
-              <h3>Lupin &mdash; Lettre</h3>
-              <p>
-                A letter on house paper from the Hôtel Britannique, addressed to
-                "Mon cher rival". The hand is steady; the typesetting is not.
-                Posted by way of a bench, the Gare du Nord, and an open newspaper.
-              </p>
-              <p class="bsa-doc-tag"><span>Open document</span> <span aria-hidden="true">&rsaquo;</span></p>
-            </a>
+      <main id="top">
+        <section class="hero" style="min-height: auto; padding-block: 3rem 1.5rem;">
+          <div class="hero-copy">
+            <p class="eyebrow hero-eyebrow">Crypto · Stego · Pwn2Play 2026</p>
+            <h1>The Baker Street Affair</h1>
+            <p class="hero-summary">Belle Époque, summer 1908. Two intercepted documents — Holmes and Lupin — two perspectives on the same theft. Reconcile the cipher chain for the primary flag, and recover the Cabinet Noir verdict hidden behind the wax seal for the bonus.</p>
           </div>
         </section>
 
-        <section class="bsa-seal-block">
-          <h2 class="bsa-h2">File seal</h2>
-          <div class="bsa-seal-row">
-            <a href="./src/seal.png" download class="bsa-seal-wrap" aria-label="Download the Cabinet Noir seal asset">
-              <img src="./src/seal.png" alt="Cabinet Noir wax seal — red roundel with the legend Bureau de Lecture, Paris 1908" class="bsa-seal-img" />
+        <section class="section">
+          <div class="section-intro">
+            <p class="eyebrow">Challenge files</p>
+            <h2>Open anything you like.</h2>
+          </div>
+          <div class="ctf-files-grid">
+            <a class="ctf-file-card" href="dossier/">
+              <span>Playable</span>
+              <strong>The case file (dossier)</strong>
+              <p>The Bureau de Lecture cover — brief, reader notes, both documents, and the seal.</p>
             </a>
-            <div class="bsa-seal-copy">
-              <p>
-                Affixed by the Bureau de Lecture, Hôtel des Postes. The wax is the
-                deep crimson the Bureau uses for political correspondence; the
-                impression is the seven-pointed star adopted by the Service de
-                Lecture in 1871 and used continuously since.
-              </p>
-              <p>
-                Cabinet Noir clerks routinely slipped a transcription précis behind
-                the wax of dossiers they considered politically inconvenient. A
-                clerk's marginal note on the cover of this file reads, in pencil:
-                <em>&laquo; pas de copie au registre &raquo;</em> &mdash; no entry in the official ledger.
-              </p>
-            </div>
+            <a class="ctf-file-card" href="holmes/">
+              <span>Playable</span>
+              <strong>Holmes — Case Note</strong>
+              <p>The British detective's note in the Dancing Men cipher.</p>
+            </a>
+            <a class="ctf-file-card" href="lupin/">
+              <span>Playable</span>
+              <strong>Lupin — Lettre</strong>
+              <p>Lupin's letter — acrostic decoy and a Baconian payload.</p>
+            </a>
+            <a class="ctf-file-card" href="/cabinet-noir/">
+              <span>Playable</span>
+              <strong>Cabinet Noir — Bureau de Lecture</strong>
+              <p>The routing slip entry point (Polybius square).</p>
+            </a>
+            <a class="ctf-file-card" href="src/seal.png" download>
+              <span>Download</span>
+              <strong>seal.png</strong>
+              <p>The wax seal — a PNG with a hidden transcription slip (bonus tier).</p>
+            </a>
+            <a class="ctf-file-card" href="Brief.md">
+              <span>Writeup</span>
+              <strong>Brief</strong>
+              <p>Challenge prompt and objective — non-spoiler.</p>
+            </a>
+            <a class="ctf-file-card" href="Solve.md">
+              <span>Writeup · spoiler</span>
+              <strong>Solution</strong>
+              <p>Full author walkthrough and both flags.</p>
+            </a>
           </div>
         </section>
+      </main>
 
-        <section class="bsa-brief-block">
-          <h2 class="bsa-h2">Archive &mdash; writeup &amp; entry</h2>
-          <p>
-            This case is preserved for replay. The original way in was the
-            <a href="/cabinet-noir/">Cabinet Noir filing slip</a>. Read the
-            <a href="Brief.md">brief</a> for the prompt, or open the
-            <a href="Solve.md">full solution</a> &mdash; spoilers.
-          </p>
-        </section>
-
-        <footer class="bsa-cover-footer">
-          <p class="bsa-cover-footer-note">
-            <strong>Pwn2Play 2026, Core Incursion &mdash; <em>The Baker Street Affair</em>.</strong>
-            Submit the recovered flag to the Pwn2Play scoreboard.
-            An educational tribute &mdash; characters belong to their authors,
-            Sir Arthur Conan Doyle (Holmes, Watson, the Cubitt cipher) and
-            Maurice Leblanc (Arsène Lupin, Ganimard, Beautrelet, Étretat).
-          </p>
-          <p class="bsa-cover-footer-links">
-            <a href="https://welbournesecurity.com/projects/pwn2play/">Pwn2Play 2026</a>
-            &nbsp;&middot;&nbsp;
-            <a href="https://welbournesecurity.com/">Welbourne Security</a>
-          </p>
-        </footer>
-
-      </article>
-
-    </main>
+      <footer class="site-footer">
+        <div class="footer-brand">
+          <strong>Welbourne Security · CTF Archive</strong>
+          <span>Playable past challenges. <a href="/" style="color: inherit;">Back to all challenges.</a></span>
+        </div>
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="/">Archive</a>
+          <a href="https://welbournesecurity.com/">Home</a>
+          <a href="https://welbournesecurity.com/writeups/">Writeups</a>
+          <a href="mailto:info@welbournesecurity.com">Email</a>
+        </nav>
+        <p class="footer-note"><span>ctf.welbournesecurity.com</span><span>The Baker Street Affair</span></p>
+      </footer>
+    </div>
   </body>
 </html>
