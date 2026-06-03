@@ -1,17 +1,17 @@
-# CONCORDAT — Solution
+# CONCORDAT, Solution
 
-> Spoiler — full walkthrough and flag.
+> Spoiler, full walkthrough and flag.
 
 **Flag:** `P2P{ZARVECK_KETROVE_VENTOR}`
 
-Three legs — **WAVERLY** (MI6), **SOLO** (CIA), **KURYAKIN** (KGB) — each yield one word
+Three legs, **WAVERLY** (MI6), **SOLO** (CIA), **KURYAKIN** (KGB), each yield one word
 fragment. The operator workstation assembles them into the combined flag. SOLO is
 load-bearing: it carries the key that unlocks KURYAKIN.
 
 > On this archive every artefact is listed on the challenge homepage. During the live
 > event the legs were discovered through a hidden trail (below).
 
-## Stage 0 — Find the way in
+## Stage 0, Find the way in
 
 The Concordat page reads as an educational tribute; the intercepts are not linked
 openly. A hidden anchor on the phrase **"watch schedule"** points to `/ops/sked.txt`
@@ -25,7 +25,7 @@ c2VjdGlvbi1paWk=   ->   section-iii
 `/section-iii/` then lists the three intercept legs and a pointer to the operator
 workstation.
 
-## Stage 1 — WAVERLY (MI6, British)
+## Stage 1, WAVERLY (MI6, British)
 
 A numbers-station recording (`broadcast.ogg`, English voice) plus `keymat.txt`. Transcribe:
 
@@ -60,7 +60,7 @@ Read the result as 2-digit letter codes (`A=01 … Z=26`, `00=space`):
 
 Plaintext **`ROMAN ZARVECK SECURE`** → **fragment `ZARVECK`**.
 
-## Stage 2 — SOLO (CIA, American)
+## Stage 2, SOLO (CIA, American)
 
 A CIA Station Rome cable (`cable.html`) with CSS redaction bars. The real text is
 Base64 in each span's `data-c` attribute (`user-select: none` defeats text-selection,
@@ -74,13 +74,13 @@ The **SUBJ-line** redaction is the asset codename → **fragment `KETROVE`**. Th
 body redactions are decoys.
 
 Paragraph 6 lists three Cyrillic names (handler line / operation codename / fallback
-principal) — these are the **candidate keys for KURYAKIN**:
+principal), these are the **candidate keys for KURYAKIN**:
 
 ```
 ЛЕНИН    СТАЛИН    ХРУЩЕВ
 ```
 
-## Stage 3 — KURYAKIN (KGB, Soviet)
+## Stage 3, KURYAKIN (KGB, Soviet)
 
 A short Cyrillic ciphertext **`НЙЫЫЬЬ`** (6 letters), the 33-letter Russian alphabet,
 and the hint *"period key not recovered locally"* (the key comes from SOLO). This is a
@@ -94,7 +94,7 @@ only **`ЛЕНИН`** yields a legible result:
 
 Plaintext **`ВЕНТОР`** → transliterate → **fragment `VENTOR`**.
 
-## Stage 4 — Assemble
+## Stage 4, Assemble
 
 Enter the three fragments at the operator workstation:
 
@@ -110,8 +110,8 @@ The workstation assembles and verifies:
 
 ## Pitfalls
 
-- **Missing the hidden entry link** — the page reads as a normal tribute; hover the prose.
-- **Wrong KURYAKIN key** — `СТАЛИН` / `ХРУЩЕВ` produce gibberish; only `ЛЕНИН` (from SOLO) decrypts.
-- **Cyrillic at the workstation** — the form strips non-`[A-Z0-9]`; submit the *transliterated* `VENTOR`.
-- **Text-selecting the redactions** — yields nothing (`user-select: none`); read the `data-c` Base64 via DevTools.
-- **WAVERLY with no auto-decoder** — the page gives the pad and a scratch area; the mod-10 maths is the player's to do.
+- **Missing the hidden entry link**, the page reads as a normal tribute; hover the prose.
+- **Wrong KURYAKIN key**, `СТАЛИН` / `ХРУЩЕВ` produce gibberish; only `ЛЕНИН` (from SOLO) decrypts.
+- **Cyrillic at the workstation**, the form strips non-`[A-Z0-9]`; submit the *transliterated* `VENTOR`.
+- **Text-selecting the redactions**, yields nothing (`user-select: none`); read the `data-c` Base64 via DevTools.
+- **WAVERLY with no auto-decoder**, the page gives the pad and a scratch area; the mod-10 maths is the player's to do.

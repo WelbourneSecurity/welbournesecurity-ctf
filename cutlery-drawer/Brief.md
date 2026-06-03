@@ -21,5 +21,5 @@ the flag format.
 
 - `OSINT.jpeg`
 
-The image metadata has been stripped, so the intended approach is visual OSINT — image
+The image metadata has been stripped, so the intended approach is visual OSINT, image
 inspection, reverse-image searching, and recognising distinctive design features.

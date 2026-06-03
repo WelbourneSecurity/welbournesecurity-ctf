@@ -7,7 +7,7 @@
 | **Difficulty** | Varied |
 | **Author** | T.Λ.R.S |
 | **Flag format** | `P2P{...}` |
-| **Hosting** | External — the DMUHackers website |
+| **Hosting** | External, the DMUHackers website |
 
 ## Description
 

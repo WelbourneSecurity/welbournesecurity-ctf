@@ -22,8 +22,8 @@
 
 ## Objective
 
-Find and decode the three transmissions — one British (WAVERLY), one American (SOLO),
-one Soviet (KURYAKIN) — recover a word fragment from each, and assemble the combined
+Find and decode the three transmissions, one British (WAVERLY), one American (SOLO),
+one Soviet (KURYAKIN), recover a word fragment from each, and assemble the combined
 flag at the operator workstation.
 
 ## Provided files
