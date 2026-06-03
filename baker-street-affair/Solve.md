@@ -1,6 +1,6 @@
-# The Baker Street Affair, Solution
+# The Baker Street Affair: Solution
 
-> Spoiler, full walkthrough and flags.
+> Spoiler: full walkthrough and flags.
 
 | Flag | Value |
 |------|-------|
@@ -14,7 +14,7 @@ the wax seal.
 > On this archive every file is listed on the challenge homepage. During the live event
 > the entry was discovered via `robots.txt` (below).
 
-## Stage 0, Entry (carré de Polybe)
+## Stage 0: Entry (carré de Polybe)
 
 `robots.txt` disallows two paths; the new one is `/cabinet-noir/`. That filing-room page
 prints a single line of 17 digit pairs and one cipher hint, the French word **Polybe**
@@ -45,7 +45,7 @@ own title and mount at the site root:
 
 The cover page presents two document cards (Holmes, Lupin) and a wax seal.
 
-## Stage 1, Holmes (Dancing Men)
+## Stage 1: Holmes (Dancing Men)
 
 `/baker-street-affair/holmes/` is a Doyle pastiche encoded in the *Dancing Men* cipher
 (Conan Doyle, 1903). Six figures decode, the final figure carries Doyle's
@@ -57,7 +57,7 @@ S T R A N D
 
 **Fragment H = `STRAND`** (the home of *The Strand Magazine*).
 
-## Stage 2, Lupin (Baconian italics)
+## Stage 2: Lupin (Baconian italics)
 
 `/baker-street-affair/lupin/` is a letter from Lupin. The paragraph acrostic spells
 **`DIAMANT`**, a deliberate red herring ("the diamonds were not the issue").
@@ -81,7 +81,7 @@ surname-first). Apply his standing convention, reverse it:
 
 `QBSETB` → **Fragment L = `BTESBQ`**.
 
-## Stage 3, Reconcile (Vigenère)
+## Stage 3: Reconcile (Vigenère)
 
 Both fragments are 6 letters: one is the key, the other the ciphertext. Holmes's note is
 written in a *standing* hand (the constant → the key); Lupin's, read in his manner, is
@@ -102,7 +102,7 @@ Lupin's letter. Wrapped in house format:
 
 **Primary flag: `P2P{LYCEE_JANSON_DE_SAILLY}`** (ASCII-only; hyphen → underscore).
 
-## Stage 4, The wax seal (bonus)
+## Stage 4: The wax seal (bonus)
 
 The cover's seal is downloadable: `/baker-street-affair/src/seal.png` ("not for
 ornament"). It is a normal PNG with an extra `tEXt` chunk (keyword `Slip`), extract it
@@ -122,7 +122,7 @@ Holmes"); the real target was **LE TRÉSOR DES ROIS**, the kings' treasure hidde
 
 | Stage | Recovered | Flag |
 |-------|-----------|------|
-| 0 | `robots.txt` → `/cabinet-noir/` → Polybius → `baker-street-affair` |, |
+| 0 | `robots.txt` → `/cabinet-noir/` → Polybius → `baker-street-affair` | (entry) |
 | 1 | Dancing Men → `STRAND` | Fragment H |
 | 2 | Baconian italics → `QBSETB` → reverse → `BTESBQ` | Fragment L |
 | 3 | Vigenère(key `STRAND`) → `JANSON` → Lycée Janson-de-Sailly | `P2P{LYCEE_JANSON_DE_SAILLY}` |
@@ -130,10 +130,10 @@ Holmes"); the real target was **LE TRÉSOR DES ROIS**, the kings' treasure hidde
 
 ## Pitfalls
 
-- **Base64-ing the Polybius digits**, the only cipher hint is the word *Polybe*; no grid is printed.
-- **Column-first vs row-first**, column-first is junk; row-first reads as English.
-- **Falling for the `DIAMANT` acrostic**, the diadem is a decoy; the payload is the typeset blockquote.
-- **Counting italics in the handwriting font**, only the IM Fell English sentence carries the Baconian bits.
-- **Forgetting the "à rebours" reversal**, un-reversed `QBSETB` Vigenères to gibberish.
-- **Stopping at `JANSON`**, trace Lupin's unnamed "young man" (Beautrelet) to his lycée.
-- **Treating `seal.png` as a plain image**, inspect its bytes/metadata for the `tEXt` slip.
+- **Base64-ing the Polybius digits**: the only cipher hint is the word *Polybe*; no grid is printed.
+- **Column-first vs row-first**: column-first is junk; row-first reads as English.
+- **Falling for the `DIAMANT` acrostic**: the diadem is a decoy; the payload is the typeset blockquote.
+- **Counting italics in the handwriting font**: only the IM Fell English sentence carries the Baconian bits.
+- **Forgetting the "à rebours" reversal**: un-reversed `QBSETB` Vigenères to gibberish.
+- **Stopping at `JANSON`**: trace Lupin's unnamed "young man" (Beautrelet) to his lycée.
+- **Treating `seal.png` as a plain image**: inspect its bytes/metadata for the `tEXt` slip.

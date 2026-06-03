@@ -1,18 +1,18 @@
-# The Sign of Four, Solution
+# The Sign of Four: Solution
 
-> Spoiler, full walkthrough and flags.
+> Spoiler: full walkthrough and flags.
 
 | Part | Flag |
 |------|------|
-| I, robots.txt | `P2P{St0p_L00K1nG_W31Rdo}` |
-| II, browser console | `P2P{y0u_f0und_th3_c0ns0le}` |
-| III, terminal command chaining | `P2P{cmd_1nj3ct10n_ftw}` |
-| IV, JavaScript XOR | `P2P{gh0st_1n_th3_c1rcu1t}` |
+| I: robots.txt | `P2P{St0p_L00K1nG_W31Rdo}` |
+| II: browser console | `P2P{y0u_f0und_th3_c0ns0le}` |
+| III: terminal command chaining | `P2P{cmd_1nj3ct10n_ftw}` |
+| IV: JavaScript XOR | `P2P{gh0st_1n_th3_c1rcu1t}` |
 
 Four flags hidden in four layers of the site, solvable entirely through manual browsing
 and source inspection. There is no fixed order.
 
-## Part I, robots.txt
+## Part I: robots.txt
 
 Basic enumeration. Visit `/robots.txt` on the challenge site; the first flag is in the
 file:
@@ -21,7 +21,7 @@ file:
 P2P{St0p_L00K1nG_W31Rdo}
 ```
 
-## Part II, browser console
+## Part II: browser console
 
 Open DevTools (`F12` / `Ctrl+Shift+I`) → **Console**. The second flag is printed to the
 console on load:
@@ -30,7 +30,7 @@ console on load:
 P2P{y0u_f0und_th3_c0ns0le}
 ```
 
-## Part III, terminal command chaining
+## Part III: terminal command chaining
 
 The hero section has a terminal-style component that passes input to a command without
 safely restricting it, allowing command chaining with a shell separator:
@@ -43,7 +43,7 @@ ls && cat flag.txt
 P2P{cmd_1nj3ct10n_ftw}
 ```
 
-## Part IV, JavaScript XOR
+## Part IV: JavaScript XOR
 
 In **DevTools → Sources → `main.js`** there is a "phase calibration" block:
 
