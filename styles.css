@@ -14,6 +14,9 @@
   --shadow: 0 28px 70px rgba(0, 0, 0, 0.4);
   --content-width: min(1180px, calc(100vw - 2rem));
   --header-height: 5.5rem;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-hero: "Space Grotesk", sans-serif;
 }
 
 @font-face {
@@ -38,6 +41,31 @@
   font-weight: 900;
   font-display: swap;
   src: url("./src/fonts/lato-900.ttf") format("truetype");
+}
+
+/* Self-hosted variable fonts (latin subset) — replaces the third-party Google Fonts request. */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("./src/fonts/inter-var.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 500 700;
+  font-display: swap;
+  src: url("./src/fonts/space-grotesk-var.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 500 700;
+  font-display: swap;
+  src: url("./src/fonts/fraunces-var.woff2") format("woff2");
 }
 
 body.light-mode {
@@ -70,7 +98,7 @@ body {
   min-width: 320px;
   min-height: 100svh;
   color: var(--text);
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: var(--font-body);
   background:
     radial-gradient(circle at 76% 10%, rgba(232, 238, 236, 0.035), transparent 24%),
     radial-gradient(circle at 12% 4%, rgba(255, 100, 100, 0.026), transparent 20%),
@@ -108,6 +136,12 @@ body.light-mode::before {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
 }
 
 .page-shell {
@@ -1407,7 +1441,7 @@ a {
 
 .roc-map-error {
   fill: rgba(242, 247, 251, 0.78);
-  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  font-family: var(--font-body);
   font-size: 24px;
   font-weight: 500;
 }
@@ -2604,11 +2638,16 @@ body.light-mode .theme-toggle {
 }
 
 .hero h1,
+.page-hero h1,
+.project-detail-hero h2 {
+  font-family: var(--font-hero);
+}
+
+.hero h1,
 .section-intro h2,
 .contact-copy h2,
 .feature-title {
   margin: 0;
-  font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
   line-height: 0.96;
   letter-spacing: 0;
@@ -3058,7 +3097,7 @@ body.light-mode .footprint-panel-grid.signal-panel-bottom {
   padding: 0.58rem 0.82rem;
   border: 1px solid var(--line-strong);
   color: var(--text);
-  font: 600 0.82rem "IBM Plex Sans", sans-serif;
+  font: 600 0.82rem var(--font-body);
   background: rgba(5, 7, 9, 0.72);
   cursor: pointer;
   transition: border-color 180ms ease, background-color 180ms ease, color 180ms ease;
@@ -3103,7 +3142,7 @@ body.light-mode .footprint-item {
   display: block;
   margin-top: 0.45rem;
   color: var(--text);
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: var(--font-body);
   font-size: 0.98rem;
   line-height: 1.45;
   overflow-wrap: anywhere;
@@ -3185,7 +3224,7 @@ body.light-mode .footprint-item {
   padding: 0.2rem 0.35rem;
   border: 1px solid var(--line);
   color: var(--text);
-  font: 0.72rem "IBM Plex Sans", sans-serif;
+  font: 0.72rem var(--font-body);
 }
 
 .command-palette {
@@ -3222,7 +3261,7 @@ body.light-mode .command-trigger {
   border: 0;
   border-bottom: 1px solid var(--line);
   color: var(--text);
-  font: 1rem "IBM Plex Sans", sans-serif;
+  font: 1rem var(--font-body);
   background: transparent;
   outline: none;
 }
@@ -6544,7 +6583,7 @@ body.motion-ready [data-reveal].is-visible {
 }
 
 .roc-download-link small {
-  font-family: "IBM Plex Sans", sans-serif;
+  font-family: var(--font-body);
   font-size: 0.68rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
