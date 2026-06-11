@@ -18,15 +18,15 @@
 > air is stale and the lights flicker as the first "Flash" report from Skipsea Post
 > reaches your desk. The clock reads 1421 Zulu.
 >
-> Your task is to take the readings — the bearing of the fire and the weight of the
-> air — and plot them on the master board. You must use the **TRUE** bearing provided
+> Your task is to take the readings, the bearing of the fire and the weight of the
+> air, and plot them on the master board. You must use the **TRUE** bearing provided
 > by the observers to ensure the strike is fixed with absolute precision.
 >
 > The volunteers at the surface have seen the light and recorded the pressure. Now it
 > is up to you to triangulate the source. Find the coordinate. Map the fallout. Save
 > what can be saved.
 >
-> First step — where did I leave that pesky control panel? Somewhere on
+> First step, where did I leave that pesky control panel? Somewhere on
 > https://welbournesecurity.com/ I believe 👀
 
 ## Objective

@@ -24,14 +24,9 @@
     <meta name="twitter:description" content="An educational tribute to the Royal Observer Corps network, showing how posts and Group Controls worked together through an interactive report plotting tool." />
     <meta name="twitter:image" content="https://welbournesecurity.com/src/social-preview.svg" />
     <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Space+Grotesk:wght@500;700&display=swap" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Space+Grotesk:wght@500;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/styles.css?v=3" />
+    <link rel="preload" as="font" type="font/woff2" href="/src/fonts/inter-var.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/src/fonts/space-grotesk-var.woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css?v=5" />
     <script type="module" src="/js/page.js" defer></script>
     <script src="./roc.js" defer></script>
   </head>
@@ -57,10 +52,10 @@
           <a href="https://welbournesecurity.com/">Home</a>
           <a href="https://welbournesecurity.com/projects/">Projects</a>
           <a href="https://welbournesecurity.com/writeups/">Writeups</a>
-          <a href="https://welbournesecurity.com/tools/">Tools</a>
+          <a href="https://welbournesecurity.com/blue-team/">Blue Team</a>
           <a href="https://welbournesecurity.com/#contact">Contact</a>
         </nav>
-        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle light and dark mode"><span class="theme-toggle-label">Light Mode</span></button>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle light and dark mode"><svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg><svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
       </div>
     </header>
     <main id="top" class="roc-shell" aria-label="Royal Observer Corps educational tribute">
@@ -158,21 +153,21 @@
             <details class="roc-map-key">
               <summary>Network key</summary>
               <ul>
-                <li><span class="roc-key-dot is-control"></span>Group Control — plotted incoming reports for an entire Group.</li>
-                <li><span class="roc-key-dot is-master"></span>Cluster master post — radio-equipped, supervised its cluster.</li>
-                <li><span class="roc-key-dot is-post"></span>Monitoring post — manned underground bunker with GZI, BPI, FSM.</li>
-                <li><span class="roc-key-line is-cluster"></span>Cluster boundary — shows posts that reported to a master.</li>
-                <li><span class="roc-key-line is-link"></span>Reporting link — master post → Group Control.</li>
+                <li><span class="roc-key-dot is-control"></span>Group Control: plotted incoming reports for an entire Group.</li>
+                <li><span class="roc-key-dot is-master"></span>Cluster master post: radio-equipped, supervised its cluster.</li>
+                <li><span class="roc-key-dot is-post"></span>Monitoring post: manned underground bunker with GZI, BPI, FSM.</li>
+                <li><span class="roc-key-line is-cluster"></span>Cluster boundary: shows posts that reported to a master.</li>
+                <li><span class="roc-key-line is-link"></span>Reporting link: master post → Group Control.</li>
               </ul>
               <p class="roc-key-subhead">Sectors (1973 reorganisation)</p>
               <ul class="roc-key-sectors">
-                <li><span class="roc-key-swatch is-metropolitan"></span>Metropolitan — Groups 1–5 covering London &amp; the Home Counties.</li>
-                <li><span class="roc-key-swatch is-southern"></span>Southern — south coast and Bristol Channel.</li>
-                <li><span class="roc-key-swatch is-midland"></span>Midland — Coventry, Bedford, Norwich, Shrewsbury.</li>
-                <li><span class="roc-key-swatch is-eastern"></span>Eastern — Lincoln, Leeds, York.</li>
-                <li><span class="roc-key-swatch is-western"></span>Western — Wrexham, Preston, Carlisle.</li>
-                <li><span class="roc-key-swatch is-caledonian"></span>Caledonian — all of Scotland (5 Groups).</li>
-                <li><span class="roc-key-swatch is-ni"></span>Northern Ireland — Group 31, Belfast.</li>
+                <li><span class="roc-key-swatch is-metropolitan"></span>Metropolitan: Groups 1–5 covering London &amp; the Home Counties.</li>
+                <li><span class="roc-key-swatch is-southern"></span>Southern: south coast and Bristol Channel.</li>
+                <li><span class="roc-key-swatch is-midland"></span>Midland: Coventry, Bedford, Norwich, Shrewsbury.</li>
+                <li><span class="roc-key-swatch is-eastern"></span>Eastern: Lincoln, Leeds, York.</li>
+                <li><span class="roc-key-swatch is-western"></span>Western: Wrexham, Preston, Carlisle.</li>
+                <li><span class="roc-key-swatch is-caledonian"></span>Caledonian: all of Scotland (5 Groups).</li>
+                <li><span class="roc-key-swatch is-ni"></span>Northern Ireland: Group 31, Belfast.</li>
               </ul>
             </details>
           </aside>
@@ -287,7 +282,7 @@
               </li>
               <li>
                 <strong>Cluster</strong>
-                <span>Within each Group, posts were gathered into radio clusters — typically three to five posts sharing a single cluster master. The master post was equipped with VHF radio as a backup to the telephone landline, so reports could still reach Group Control if landlines failed. The cluster boundary is shown as a green polygon on the map.</span>
+                <span>Within each Group, posts were gathered into radio clusters, typically three to five posts sharing a single cluster master. The master post was equipped with VHF radio as a backup to the telephone landline, so reports could still reach Group Control if landlines failed. The cluster boundary is shown as a green polygon on the map.</span>
               </li>
               <li>
                 <strong>Post</strong>
@@ -366,7 +361,7 @@
 
       <section class="roc-group20" aria-labelledby="roc-group20-title">
         <div class="roc-section-heading">
-          <p class="roc-kicker">Group 20 — York</p>
+          <p class="roc-kicker">Group 20, York</p>
           <h2 id="roc-group20-title">The complete cluster structure</h2>
           <p>
             Group 20 covered the North and East Ridings of Yorkshire and the West Riding after the 1968 reorganisation,
@@ -379,7 +374,7 @@
 
         <div class="roc-group20-table-wrap">
           <table class="roc-group20-table">
-            <caption>Group 20 cluster structure — March 1989 (source: ringbell.co.uk)</caption>
+            <caption>Group 20 cluster structure, March 1989 (source: ringbell.co.uk)</caption>
             <thead>
               <tr>
                 <th scope="col">Cluster</th>
@@ -517,7 +512,7 @@
             </ul>
           </div>
           <div>
-            <h3>Group 20 — York</h3>
+            <h3>Group 20, York</h3>
             <ul>
               <li><a href="https://www.english-heritage.org.uk/visit/places/york-cold-war-bunker/">York Cold War Bunker (English Heritage)</a></li>
               <li><a href="https://www.subbrit.org.uk/sites/acomb-york-roc-group-hq/">SubBrit: Acomb York ROC Group HQ</a></li>
@@ -547,7 +542,7 @@
     <footer class="site-footer">
       <div class="footer-brand"><strong>Welbourne Security</strong><span>Cyber intelligence portfolio and local browser tools.</span></div>
       <nav class="footer-links" aria-label="Footer navigation">
-        <a href="https://welbournesecurity.com/">Home</a><a href="https://welbournesecurity.com/projects/">Projects</a><a href="https://welbournesecurity.com/writeups/">Writeups</a><a href="https://welbournesecurity.com/tools/">Tools</a><a href="https://welbournesecurity.com/credentials/">Credentials</a><a href="https://welbournesecurity.com/about/">About</a><a href="mailto:info@welbournesecurity.com">Email</a>
+        <a href="https://welbournesecurity.com/">Home</a><a href="https://welbournesecurity.com/projects/">Projects</a><a href="https://welbournesecurity.com/writeups/">Writeups</a><a href="https://welbournesecurity.com/blue-team/">Blue Team</a><a href="https://welbournesecurity.com/credentials/">Credentials</a><a href="https://welbournesecurity.com/about/">About</a><a href="mailto:info@welbournesecurity.com">Email</a>
       </nav>
     </footer>
 </body>

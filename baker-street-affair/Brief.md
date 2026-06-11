@@ -11,7 +11,7 @@
 
 ## Description
 
-> Paris, summer 1908. Two intercepted documents have reached the *Bureau de Lecture* —
+> Paris, summer 1908. Two intercepted documents have reached the *Bureau de Lecture*, 
 > one from the British detective Mr. Sherlock Holmes, one from the gentleman thief
 > Arsène Lupin. Their accounts of the same theft disagree.
 >
@@ -20,7 +20,7 @@
 >
 > Your starting point is `https://welbournesecurity.com/`. The case file is hidden
 > within the site. Read both documents, reconcile them, recognise the writer's standing
-> conventions — and, if you can, determine what the censors didn't want sent.
+> conventions, and, if you can, determine what the censors didn't want sent.
 >
 > Two flags. The primary returns a place; the bonus returns a verdict.
 
@@ -32,6 +32,6 @@ Lupin's letter (one writer keeps a standing convention not stated on the page), 
 
 ## Provided files
 
-None — everything required is hosted on the site. The primary flag names a Paris
+None, everything required is hosted on the site. The primary flag names a Paris
 location; the bonus names a Cabinet Noir verdict in French. No flag-format hint is given
 on the site itself; both flags use the standard Pwn2Play uppercase / underscored form.

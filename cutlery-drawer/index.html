@@ -4,17 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Cutlery Drawer | Welbourne Security CTF Archive</title>
-    <meta name="description" content="The Cutlery Drawer — an OSINT challenge from Pwn2Play. Provided image, brief, and solution." />
+    <meta name="description" content="The Cutlery Drawer, an OSINT challenge from Pwn2Play. Provided image, brief, and solution." />
     <meta name="robots" content="index,follow" />
-    <meta name="theme-color" content="#071018" />
+    <meta name="theme-color" content="#0a0b0c" />
     <link rel="canonical" href="https://ctf.welbournesecurity.com/cutlery-drawer/" />
     <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/styles.css?v=3" />
+    <link rel="preload" as="font" type="font/woff2" href="/src/fonts/inter-var.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/src/fonts/space-grotesk-var.woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css?v=5" />
   </head>
   <body>
+    <script>(function(){try{var t=localStorage.getItem("theme");var d=window.matchMedia("(prefers-color-scheme: dark)").matches;if(t==="light"||(!t&&!d))document.body.classList.add("light-mode");}catch(e){}})();</script>
     <a class="skip-to-content" href="#top">Skip to main content</a>
     <div class="page-shell">
       <header class="site-header">
@@ -37,6 +37,7 @@
             <a href="https://welbournesecurity.com/">Main site</a>
             <a href="https://welbournesecurity.com/writeups/">Writeups</a>
           </nav>
+          <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle light and dark mode"><svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg><svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
         </div>
       </header>
 
@@ -45,7 +46,7 @@
           <div class="hero-copy">
             <p class="eyebrow hero-eyebrow">OSINT · Pwn2Play 2026</p>
             <h1>The Cutlery Drawer</h1>
-            <p class="hero-summary">Everything has a place — find what's been hidden in plain sight across open sources. Identify the venue from a single image and submit the name of the place.</p>
+            <p class="hero-summary">Everything has a place. Find what's been hidden in plain sight across open sources. Identify the venue from a single image and submit the name of the place.</p>
           </div>
         </section>
 
@@ -58,12 +59,12 @@
             <a class="ctf-file-card" href="OSINT.jpeg" download>
               <span>Download</span>
               <strong>OSINT.jpeg</strong>
-              <p>The single image given to players. Metadata stripped — solve it visually.</p>
+              <p>The single image given to players. Metadata stripped. Solve it visually.</p>
             </a>
             <a class="ctf-file-card" href="Brief.md">
               <span>Writeup</span>
               <strong>Brief</strong>
-              <p>Challenge prompt and objective — non-spoiler.</p>
+              <p>Challenge prompt and objective, non-spoiler.</p>
             </a>
             <a class="ctf-file-card" href="Solve.md">
               <span>Writeup · spoiler</span>
@@ -88,5 +89,6 @@
         <p class="footer-note"><span>ctf.welbournesecurity.com</span><span>The Cutlery Drawer</span></p>
       </footer>
     </div>
+    <script type="module" src="/js/page.js?v=5"></script>
   </body>
 </html>

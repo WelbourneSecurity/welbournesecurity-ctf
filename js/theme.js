@@ -12,8 +12,7 @@ export function initTheme({ onDesktopViewport } = {}) {
     document.body.classList.toggle("light-mode", theme === "light");
     document.body.dataset.theme = theme;
     localStorage.setItem("theme", theme);
-    const label = themeToggle?.querySelector(".theme-toggle-label");
-    if (label) label.textContent = theme === "light" ? "Dark Mode" : "Light Mode";
+    themeToggle?.setAttribute("aria-label", theme === "light" ? "Switch to dark mode" : "Switch to light mode");
   };
 
   const savedTheme = localStorage.getItem("theme");

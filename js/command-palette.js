@@ -1,19 +1,21 @@
+// CTF-archive flavour of the main site's palette: local hrefs point at
+// challenges on this subdomain, everything else goes to welbournesecurity.com.
 const commandItems = [
-  { label: "Home", detail: "Portfolio overview", href: "/" },
-  { label: "Projects", detail: "RFIDemon and ROC network project work", href: "/projects/" },
-  { label: "Writeups", detail: "Hack The Box and TryHackMe archive", href: "/writeups/" },
-  { label: "Tools", detail: "Local browser security workbench", href: "/tools/" },
-  { label: "About", detail: "Methodology, ethics, and focus", href: "/about/" },
-  { label: "Credentials", detail: "Credential details and verification links", href: "/credentials/" },
-  { label: "Contact", detail: "Collaboration and hiring contact", href: "/#contact" },
-  { label: "RFIDemon", detail: "Raspberry Pi RFID analysis and cloning workstation", href: "/projects/#rfidemon" },
-  { label: "ROC Network", detail: "Royal Observer Corps interactive project", href: "/projects/roc-network/" },
-  { label: "Password Generator", detail: "Generate and score local passwords", href: "/tools/#tool-password" },
-  { label: "IOC Extractor", detail: "Extract, defang, and refang indicators", href: "/tools/#tool-ioc" },
-  { label: "JWT Decoder", detail: "Decode token headers and claims locally", href: "/tools/#tool-jwt" },
-  { label: "Hash Verifier", detail: "Hash text and compare digests", href: "/tools/#tool-hash" },
-  { label: "CIDR Converter", detail: "Map IPv4 CIDR ranges", href: "/tools/#tool-subnet" },
-  { label: "Regex Tester", detail: "Test patterns and capture groups", href: "/tools/#tool-regex" }
+  { label: "CTF Archive", detail: "Playable challenges from past events", href: "/" },
+  { label: "The Cutlery Drawer", detail: "OSINT: hidden in plain sight across open sources", href: "/cutlery-drawer/" },
+  { label: "BIKINI State: RED", detail: "Royal Observer Corps bearings and the Group Control workstation", href: "/bikini-state-red/" },
+  { label: "CONCORDAT", detail: "Three Cold War intercepts, three services, one combined flag", href: "/concordat/" },
+  { label: "The Baker Street Affair", detail: "Belle Epoque crypto and stego: Holmes versus Lupin", href: "/baker-street-affair/" },
+  { label: "The Sign of Four", detail: "Four-part web exploitation series", href: "/sign-of-four/" },
+  { label: "ROC Network", detail: "Royal Observer Corps interactive companion", href: "/roc-network/" },
+  { label: "Main site", detail: "Welbourne Security portfolio overview", href: "https://welbournesecurity.com/" },
+  { label: "Projects", detail: "RFIDemon, Pwn2Play, and project work", href: "https://welbournesecurity.com/projects/" },
+  { label: "Writeups", detail: "CTF, Hack The Box, and TryHackMe archive", href: "https://welbournesecurity.com/writeups/" },
+  { label: "Blue Team", detail: "Defensive knowledge base: Splunk, PowerShell, DFIR, IR", href: "https://welbournesecurity.com/blue-team/" },
+  { label: "About", detail: "Methodology, ethics, and focus", href: "https://welbournesecurity.com/about/" },
+  { label: "Credentials", detail: "Credential details and verification links", href: "https://welbournesecurity.com/credentials/" },
+  { label: "Contact", detail: "Collaboration and hiring contact", href: "https://welbournesecurity.com/#contact" },
+  { label: "Email me", detail: "info@welbournesecurity.com - collaboration and hiring", href: "mailto:info@welbournesecurity.com" }
 ];
 
 const normalizeQuery = (value) => value.trim().toLowerCase();
@@ -54,7 +56,7 @@ export function initCommandPalette() {
   const input = document.createElement("input");
   input.className = "command-input";
   input.type = "search";
-  input.placeholder = "Search pages, projects, and tools...";
+  input.placeholder = "Search pages, projects, and the knowledge base...";
   input.setAttribute("aria-label", "Search site");
 
   const list = document.createElement("div");
@@ -88,7 +90,7 @@ export function initCommandPalette() {
     if (!filtered.length) {
       const empty = document.createElement("p");
       empty.className = "command-empty";
-      empty.textContent = "No matching pages or tools.";
+      empty.textContent = "No matching pages or entries.";
       list.replaceChildren(empty);
       return;
     }

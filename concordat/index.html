@@ -4,17 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CONCORDAT | Welbourne Security CTF Archive</title>
-    <meta name="description" content="CONCORDAT — a three-leg Cold War cryptography challenge from Pwn2Play. All task files, brief, and solution." />
+    <meta name="description" content="CONCORDAT, a three-leg Cold War cryptography challenge from Pwn2Play. All task files, brief, and solution." />
     <meta name="robots" content="index,follow" />
-    <meta name="theme-color" content="#071018" />
+    <meta name="theme-color" content="#0a0b0c" />
     <link rel="canonical" href="https://ctf.welbournesecurity.com/concordat/" />
     <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="/styles.css?v=3" />
+    <link rel="preload" as="font" type="font/woff2" href="/src/fonts/inter-var.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/src/fonts/space-grotesk-var.woff2" crossorigin />
+    <link rel="stylesheet" href="/styles.css?v=5" />
   </head>
   <body>
+    <script>(function(){try{var t=localStorage.getItem("theme");var d=window.matchMedia("(prefers-color-scheme: dark)").matches;if(t==="light"||(!t&&!d))document.body.classList.add("light-mode");}catch(e){}})();</script>
     <a class="skip-to-content" href="#top">Skip to main content</a>
     <div class="page-shell">
       <header class="site-header">
@@ -37,6 +37,7 @@
             <a href="https://welbournesecurity.com/">Main site</a>
             <a href="https://welbournesecurity.com/writeups/">Writeups</a>
           </nav>
+          <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle light and dark mode"><svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg><svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
         </div>
       </header>
 
@@ -45,7 +46,7 @@
           <div class="hero-copy">
             <p class="eyebrow hero-eyebrow">Crypto · Multi-leg · Pwn2Play 2026</p>
             <h1>CONCORDAT</h1>
-            <p class="hero-summary">Three Cold War intercepts — British SIGINT, American case-handling, Soviet cryptography — one week in March 1989. Recover a fragment from each leg and assemble the combined flag at the operator workstation.</p>
+            <p class="hero-summary">Three Cold War intercepts, British SIGINT, American case-handling, Soviet cryptography, one week in March 1989. Recover a fragment from each leg and assemble the combined flag at the operator workstation.</p>
           </div>
         </section>
 
@@ -57,18 +58,18 @@
           <div class="ctf-files-grid">
             <a class="ctf-file-card" href="intercepts/intercept-a/">
               <span>Playable</span>
-              <strong>Intercept A — WAVERLY</strong>
-              <p>MI6 — British SIGINT numbers station (one-time pad).</p>
+              <strong>Intercept A, WAVERLY</strong>
+              <p>MI6, British SIGINT numbers station (one-time pad).</p>
             </a>
             <a class="ctf-file-card" href="intercepts/intercept-b/cable.html">
               <span>Playable</span>
-              <strong>Intercept B — SOLO</strong>
-              <p>CIA — redacted Station Rome cable.</p>
+              <strong>Intercept B, SOLO</strong>
+              <p>CIA, redacted Station Rome cable.</p>
             </a>
             <a class="ctf-file-card" href="intercepts/intercept-c/">
               <span>Playable</span>
-              <strong>Intercept C — KURYAKIN</strong>
-              <p>KGB — Soviet Vigenère telegram.</p>
+              <strong>Intercept C, KURYAKIN</strong>
+              <p>KGB, Soviet Vigenère telegram.</p>
             </a>
             <a class="ctf-file-card" href="operator/">
               <span>Playable</span>
@@ -82,18 +83,18 @@
             </a>
             <a class="ctf-file-card" href="tribute/">
               <span>Playable</span>
-              <strong>Concordat — educational tribute</strong>
+              <strong>Concordat, educational tribute</strong>
               <p>Background page on the three services (the original entry point).</p>
             </a>
             <a class="ctf-file-card" href="/ops/sked.txt" download>
               <span>Download</span>
               <strong>ops/sked.txt</strong>
-              <p>The BBC Y-section watch schedule — the hidden trail.</p>
+              <p>The BBC Y-section watch schedule, the hidden trail.</p>
             </a>
             <a class="ctf-file-card" href="Brief.md">
               <span>Writeup</span>
               <strong>Brief</strong>
-              <p>Challenge prompt and objective — non-spoiler.</p>
+              <p>Challenge prompt and objective, non-spoiler.</p>
             </a>
             <a class="ctf-file-card" href="Solve.md">
               <span>Writeup · spoiler</span>
@@ -118,5 +119,6 @@
         <p class="footer-note"><span>ctf.welbournesecurity.com</span><span>CONCORDAT</span></p>
       </footer>
     </div>
+    <script type="module" src="/js/page.js?v=5"></script>
   </body>
 </html>
