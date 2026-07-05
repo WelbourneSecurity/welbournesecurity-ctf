@@ -100,11 +100,14 @@
       </header>
 
       <main id="top">
-        <section class="hero" style="min-height: auto; padding-block: 3rem 1.5rem;">
-          <div class="hero-copy">
-            <p class="eyebrow hero-eyebrow">CTF Archive</p>
-            <h1>Playable challenges from past CTF events.</h1>
-            <p class="hero-summary">Every challenge listed below is preserved here so you can replay it any time. The intended solve order varies by event; pick whichever starting point looks interesting.</p>
+        <section class="hero hero-cta">
+          <div class="hero-card" id="hero-card">
+            <canvas class="hero-dither" id="hero-dither" aria-hidden="true"></canvas>
+            <div class="hero-copy">
+              <p class="eyebrow hero-eyebrow">CTF Archive</p>
+              <h1>Playable challenges from past CTF events.</h1>
+              <p class="hero-summary">Every challenge listed below is preserved here so you can replay it any time. The intended solve order varies by event; pick whichever starting point looks interesting.</p>
+            </div>
           </div>
         </section>
 
@@ -163,6 +166,6 @@
         </p>
       </footer>
     </div>
-    <script type="module" src="/js/page.js?v=5"></script>
+    <script type="module" src="/js/page.js?v=6"></script>
   </body>
 </html>
