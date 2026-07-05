@@ -249,6 +249,24 @@ h3 {
   transform-origin: left;
 }
 
+/* The current page in the nav: same underline as hover, but persistent. */
+.site-nav .is-current {
+  position: relative;
+  padding-bottom: 0.15rem;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.site-nav .is-current::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--signal);
+}
+
 .theme-toggle {
   display: grid;
   place-items: center;
