@@ -3078,37 +3078,6 @@ body.motion-ready [data-reveal].is-visible {
     background: var(--accent);
   }
 
-  /* Reduced mobile chrome: hide the primary nav and drop the fixed bottom nav
-     bar. Keep just the brand (which links home) on the left and a plain theme
-     toggle on the right in the top header. */
-  body.mobile-lite .site-nav {
-    display: none;
-  }
-
-  body.mobile-lite .header-actions,
-  body.light-mode.mobile-lite .header-actions {
-    position: static;
-    display: flex;
-    width: auto;
-    margin-left: auto;
-    gap: 0;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-    box-shadow: none;
-    backdrop-filter: none;
-  }
-
-  body.mobile-lite .theme-toggle {
-    grid-column: auto;
-    width: 2.8rem;
-    height: 2.8rem;
-    min-height: 0;
-    padding: 0;
-    border: 1px solid var(--line-strong);
-    box-shadow: none;
-  }
-
   .section-intro h2,
   .contact-copy h2,
   .feature-title {
