@@ -11,7 +11,7 @@
     <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
     <link rel="preload" as="font" type="font/woff2" href="/src/fonts/inter-var.woff2" crossorigin />
     <link rel="preload" as="font" type="font/woff2" href="/src/fonts/space-grotesk-var.woff2" crossorigin />
-    <link rel="stylesheet" href="/styles.css?v=5" />
+    <link rel="stylesheet" href="/styles.css?v=9" />
   </head>
   <body>
     <script>(function(){try{var t=localStorage.getItem("theme");var d=window.matchMedia("(prefers-color-scheme: dark)").matches;if(t==="light"||(!t&&!d))document.body.classList.add("light-mode");}catch(e){}})();</script>
@@ -20,14 +20,7 @@
       <header class="site-header">
         <a class="brand" href="/" aria-label="Back to CTF archive">
           <span class="brand-mark" aria-hidden="true">
-            <svg viewBox="0 0 48 48" focusable="false">
-              <circle cx="24" cy="24" r="18" class="brand-mark-ring"></circle>
-              <circle cx="24" cy="24" r="11" class="brand-mark-ring"></circle>
-              <path d="M24 6 V42" class="brand-mark-grid"></path>
-              <path d="M6 24 H42" class="brand-mark-grid"></path>
-              <circle cx="24" cy="24" r="3.2" class="brand-mark-core"></circle>
-              <path d="M24 6 A18 18 0 0 1 42 24" class="brand-mark-sweep"></path>
-            </svg>
+            <svg viewBox="0 0 48 48" focusable="false"><circle cx="24" cy="24" r="19" class="brand-radar-ring"></circle><circle cx="24" cy="24" r="11.5" class="brand-radar-ring brand-radar-ring-inner"></circle><path d="M24 5V43M5 24H43" class="brand-radar-grid"></path><g class="brand-radar-sweep"><rect class="brand-radar-trail" x="33" y="12" width="3" height="3" opacity="0.7"></rect><rect class="brand-radar-trail" x="30" y="15" width="3" height="3" opacity="0.65"></rect><rect class="brand-radar-trail" x="33" y="15" width="3" height="3" opacity="0.55"></rect><rect class="brand-radar-trail" x="36" y="15" width="3" height="3" opacity="0.45"></rect><rect class="brand-radar-trail" x="30" y="18" width="3" height="3" opacity="0.35"></rect><rect class="brand-radar-trail" x="33" y="18" width="3" height="3" opacity="0.4"></rect><path class="brand-radar-beam" d="M24 24L36.2 9.4"></path></g><circle cx="24" cy="24" r="2.6" class="brand-radar-core"></circle><circle cx="39" cy="20.5" r="2.8" class="brand-radar-blip"></circle></svg>
           </span>
           <span class="brand-copy"><strong>Welbourne Security</strong><small>CTF Archive</small></span>
         </a>
