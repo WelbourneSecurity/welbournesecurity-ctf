@@ -249,6 +249,24 @@ h3 {
   transform-origin: left;
 }
 
+/* The current page in the nav: same underline as hover, but persistent. */
+.site-nav .is-current {
+  position: relative;
+  padding-bottom: 0.15rem;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.site-nav .is-current::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--signal);
+}
+
 .theme-toggle {
   display: grid;
   place-items: center;
@@ -347,6 +365,76 @@ body.light-mode .theme-toggle .theme-icon-moon {
   font-size: 1.08rem;
   line-height: 1.75;
   text-wrap: pretty;
+}
+
+/* ── Dithering CTA hero (mirrored from the main site) ──────────────────────
+   One hard-edged card filling the hero, holding a WebGL ordered-dither warp
+   field (js/hero-dither.js) behind centred copy. Sharp corners + hairline
+   border per the design system. */
+.hero.hero-cta {
+  display: grid;
+  align-items: stretch;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  min-height: calc(92svh - var(--header-height));
+  padding: 1.2rem 0 2.4rem;
+}
+
+.hero-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: min(600px, 72svh);
+  padding: clamp(3rem, 8vh, 5rem) 1.5rem;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  overflow: hidden;
+  text-align: center;
+}
+
+/* WebGL warp field: cobalt on the dark theme, the source component's amber on
+   paper. Explicit here (not var(--accent-blue)) so it stays blue regardless of
+   the archive's monochrome accent token. Opacity/blend live here too. */
+.hero-dither {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  color: #5b8cff;
+  opacity: 0.3;
+  mix-blend-mode: screen;
+  image-rendering: pixelated;
+  pointer-events: none;
+}
+
+body.light-mode .hero-dither {
+  color: #ec4e02;
+  opacity: 0.4;
+  mix-blend-mode: multiply;
+}
+
+.hero-cta .hero-copy {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 52rem;
+}
+
+.hero-cta h1 {
+  font-size: clamp(3rem, 7.5vw, 6rem);
+  line-height: 1.02;
+}
+
+.hero-cta .hero-summary {
+  max-width: 34rem;
+  margin: 1.4rem auto 0;
+  color: var(--text);
+  font-size: 1.14rem;
 }
 
 .operator-copy p,
