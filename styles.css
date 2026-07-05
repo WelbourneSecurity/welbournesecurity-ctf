@@ -3170,6 +3170,18 @@ body.motion-ready [data-reveal].is-visible {
     padding-inline: 0.75rem;
   }
 
+  /* Dithering CTA hero: on phones the card drives its own reduced height so the
+     hero fits a single screen instead of inheriting the desktop 72svh card. */
+  body.mobile-lite .hero.hero-cta {
+    min-height: auto;
+    padding: 0 var(--gutter) 1.5rem;
+  }
+
+  body.mobile-lite .hero.hero-cta .hero-card {
+    min-height: clamp(19rem, 54svh, 24rem);
+    padding: clamp(1.9rem, 6svh, 2.8rem) 1.25rem;
+  }
+
   body.mobile-lite .hero-facts,
   body.mobile-lite .hero-visual,
   body.mobile-lite .list-section {
