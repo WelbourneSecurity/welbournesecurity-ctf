@@ -421,8 +421,10 @@ body.light-mode .theme-toggle .theme-icon-moon {
   align-items: stretch;
   grid-template-columns: minmax(0, 1fr);
   gap: 0;
-  min-height: calc(92svh - var(--header-height));
-  padding: 1.2rem 0 2.4rem;
+  /* Standard hero band, sized to match the Alchemist hero. Only the main-site
+     landing hero is intentionally larger (min(600px, 72svh) + 92svh section). */
+  min-height: auto;
+  padding: 2.5rem 0 3rem;
 }
 
 .hero-card {
@@ -431,8 +433,8 @@ body.light-mode .theme-toggle .theme-icon-moon {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: min(600px, 72svh);
-  padding: clamp(3rem, 8vh, 5rem) 1.5rem;
+  min-height: min(32rem, 66svh);
+  padding: clamp(3rem, 7vh, 4.5rem) 1.5rem;
   border: 1px solid var(--line-strong);
   background: var(--surface);
   overflow: hidden;
@@ -471,15 +473,17 @@ body.light-mode .hero-dither {
 }
 
 .hero-cta h1 {
-  font-size: clamp(3rem, 7.5vw, 6rem);
-  line-height: 1.02;
+  /* Matches the Alchemist page-hero title scale, so the two heroes read the
+     same size. The main-site hero keeps the larger clamp(3rem, 7.5vw, 6rem). */
+  font-size: clamp(2.6rem, 6vw, 4.75rem);
+  line-height: 0.98;
 }
 
 .hero-cta .hero-summary {
   max-width: 34rem;
-  margin: 1.4rem auto 0;
+  margin: 1.35rem auto 0;
   color: var(--text);
-  font-size: 1.14rem;
+  font-size: 1.05rem;
 }
 
 .operator-copy p,
