@@ -1,3 +1,21 @@
+// Theme preference is mirrored to a cookie scoped to the registrable domain
+// (.welbournesecurity.com) so the choice carries across the site and its
+// subdomains (ctf., alchemist.), which don't share localStorage. localStorage
+// is kept as a same-origin fallback. On other hosts (localhost, *.github.io)
+// the cookie is written host-only so local testing still exercises the path.
+const THEME_COOKIE = "ws_theme";
+
+const readThemeCookie = () => {
+  const match = document.cookie.match(/(?:^|;\s*)ws_theme=(light|dark)/);
+  return match ? match[1] : null;
+};
+
+const writeThemeCookie = (theme) => {
+  const onSiteDomain = /(^|\.)welbournesecurity\.com$/.test(location.hostname);
+  const domain = onSiteDomain ? "; domain=.welbournesecurity.com" : "";
+  document.cookie = `${THEME_COOKIE}=${theme}; path=/; max-age=31536000; samesite=lax${domain}`;
+};
+
 export function initTheme({ onDesktopViewport } = {}) {
   const compactMobileQuery = window.matchMedia("(max-width: 960px)");
   const siteHeader = document.querySelector(".site-header");
@@ -11,11 +29,18 @@ export function initTheme({ onDesktopViewport } = {}) {
   const setTheme = (theme) => {
     document.body.classList.toggle("light-mode", theme === "light");
     document.body.dataset.theme = theme;
-    localStorage.setItem("theme", theme);
+    try {
+      localStorage.setItem("theme", theme);
+    } catch (e) {
+      /* private mode / storage disabled — the cookie still carries the choice */
+    }
+    writeThemeCookie(theme);
     themeToggle?.setAttribute("aria-label", theme === "light" ? "Switch to dark mode" : "Switch to light mode");
   };
 
-  const savedTheme = localStorage.getItem("theme");
+  // Cookie wins (it may have been set on another subdomain); localStorage is the
+  // same-origin fallback for the very first visit before any cookie exists.
+  const savedTheme = readThemeCookie() || localStorage.getItem("theme");
   const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
   const resolvedTheme = savedTheme === "light" ? "light" : savedTheme === "dark" ? "dark" : systemPrefersDark ? "dark" : "light";
   setTheme(resolvedTheme);

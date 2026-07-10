@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/styles.css?v=9" />
   </head>
   <body>
-    <script>(function(){try{var t=localStorage.getItem("theme");var d=window.matchMedia("(prefers-color-scheme: dark)").matches;if(t==="light"||(!t&&!d))document.body.classList.add("light-mode");}catch(e){}})();</script>
+    <script>(function(){try{var m=document.cookie.match(/(?:^|;\s*)ws_theme=(light|dark)/);var t=m?m[1]:localStorage.getItem("theme");var d=window.matchMedia("(prefers-color-scheme: dark)").matches;if(t==="light"||(!t&&!d))document.body.classList.add("light-mode");}catch(e){}})();</script>
     <a class="skip-to-content" href="#top">Skip to main content</a>
     <div class="page-shell">
       <header class="site-header">

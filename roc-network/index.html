@@ -31,7 +31,7 @@
     <script src="./roc.js" defer></script>
   </head>
   <body class="roc-page">
-    <script>(function(){try{var t=localStorage.getItem("theme");var d=window.matchMedia("(prefers-color-scheme: dark)").matches;if(t==="light"||(!t&&!d))document.body.classList.add("light-mode");}catch(e){}})();</script>
+    <script>(function(){try{var m=document.cookie.match(/(?:^|;\s*)ws_theme=(light|dark)/);var t=m?m[1]:localStorage.getItem("theme");var d=window.matchMedia("(prefers-color-scheme: dark)").matches;if(t==="light"||(!t&&!d))document.body.classList.add("light-mode");}catch(e){}})();</script>
     <a class="skip-to-content" href="#top">Skip to main content</a>
     <header class="site-header">
       <a class="brand" href="https://welbournesecurity.com/" aria-label="Back to home">
@@ -45,7 +45,7 @@
           <a href="https://welbournesecurity.com/">Home</a>
           <a href="https://welbournesecurity.com/projects/">Projects</a>
           <a href="https://welbournesecurity.com/writeups/">Writeups</a>
-          <a href="https://welbournesecurity.com/blue-team/">Blue Team</a>
+          <a href="https://welbournesecurity.com/blue-team/">Blue Team</a><a href="https://welbournesecurity.com/contact/">Contact</a>
           <a href="https://welbournesecurity.com/#contact">Contact</a>
         </nav>
         <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle light and dark mode"><svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg><svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
@@ -535,7 +535,7 @@
     <footer class="site-footer">
       <div class="footer-brand"><strong>Welbourne Security</strong><span>Cyber intelligence portfolio and local browser tools.</span></div>
       <nav class="footer-links" aria-label="Footer navigation">
-        <a href="https://welbournesecurity.com/">Home</a><a href="https://welbournesecurity.com/projects/">Projects</a><a href="https://welbournesecurity.com/writeups/">Writeups</a><a href="https://welbournesecurity.com/blue-team/">Blue Team</a><a href="https://welbournesecurity.com/credentials/">Credentials</a><a href="https://welbournesecurity.com/about/">About</a><a href="mailto:info@welbournesecurity.com">Email</a>
+        <a href="https://welbournesecurity.com/">Home</a><a href="https://welbournesecurity.com/projects/">Projects</a><a href="https://welbournesecurity.com/writeups/">Writeups</a><a href="https://welbournesecurity.com/blue-team/">Blue Team</a><a href="https://welbournesecurity.com/contact/">Contact</a><a href="https://welbournesecurity.com/credentials/">Credentials</a><a href="https://welbournesecurity.com/about/">About</a><a href="mailto:info@welbournesecurity.com">Email</a>
       </nav>
     </footer>
 </body>
