@@ -1081,6 +1081,14 @@ body.light-mode .writeup-viewer {
   line-height: 1.7;
 }
 
+/* Cap prose to a comfortable reading measure on wide monitors — the content
+   column runs to 1440px, which is far too wide for paragraph text. Headings,
+   eyebrows, and card grids keep the full width. */
+.section-note,
+.section-intro > p:not(.eyebrow) {
+  max-width: 68ch;
+}
+
 .brand-mark img {
   width: 1.9rem;
   height: 1.9rem;
